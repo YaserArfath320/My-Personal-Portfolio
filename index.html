@@ -1,0 +1,3851 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yaser Arfath | Full-Stack Developer &amp; AI Builder</title>
+  <meta name="description"
+    content="Portfolio of Yaser Arfath — Full-Stack Developer based in Bengaluru, India. Building modern, scalable web applications with React, Next.js, Node.js, and emerging AI technologies." />
+  <meta name="keywords"
+    content="Yaser Arfath, Full-Stack Developer, Frontend Developer, React, Next.js, AI Apps, Bengaluru Developer" />
+  <meta name="author" content="Yaser Arfath" />
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Yaser Arfath — Full-Stack Developer" />
+  <meta property="og:description"
+    content="Turning real-world requirements into clean, practical digital experiences with React, Next.js, Node.js, and Agentic AI." />
+
+  <!-- Google Fonts: Anton & Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       CSS RESET & THEME VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-main: #0c0d10;
+      --bg-surface: #14161b;
+      --bg-card: #181b22;
+      --bg-card-hover: #20242d;
+      --bg-light: #242933;
+
+      --primary: #f59e0b;
+      /* Golden Amber accent */
+      --primary-hover: #fbbf24;
+      --primary-muted: rgba(245, 158, 11, 0.15);
+
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-submuted: #6b7280;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-light: rgba(255, 255, 255, 0.15);
+      --border-accent: rgba(245, 158, 11, 0.35);
+
+      --font-display: 'Anton', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+      line-height: 1.6;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE and Edge */
+    }
+
+    /* Hide scrollbar for Chrome, Safari, Edge, Opera */
+    ::-webkit-scrollbar {
+      display: none;
+      width: 0px;
+      height: 0px;
+      background: transparent;
+    }
+
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--primary);
+      color: #000;
+    }
+
+    /* Links & Buttons */
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* Typography Utilities */
+    .font-anton {
+      font-family: var(--font-display);
+      letter-spacing: 0.02em;
+    }
+
+    .font-heading {
+      font-family: var(--font-heading);
+    }
+
+    .text-primary {
+      color: var(--primary);
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+    }
+
+    .text-submuted {
+      color: var(--text-submuted);
+    }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+    }
+
+    .section-py {
+      padding-top: 6.5rem;
+      padding-bottom: 6.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-py {
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+      }
+    }
+
+    /* ==========================================================================
+       PREMIUM BACKGROUND ANIMATIONS & AMBIENT GLOW
+       ========================================================================== */
+    .bg-glow-layer {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    /* Ambient Orb 1: Golden Amber Glow */
+    .bg-orb-1 {
+      top: -120px;
+      left: 10%;
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.14) 0%, rgba(245, 158, 11, 0.03) 55%, transparent 70%);
+      filter: blur(80px);
+      animation: floatOrb1 20s ease-in-out infinite alternate;
+    }
+
+    /* Ambient Orb 2: Electric Cyan/Blue Glow */
+    .bg-orb-2 {
+      top: 40%;
+      right: -100px;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(20, 184, 166, 0.04) 55%, transparent 70%);
+      filter: blur(90px);
+      animation: floatOrb2 26s ease-in-out infinite alternate;
+    }
+
+    /* Ambient Orb 3: Cosmic Purple/Amber Fusion */
+    .bg-orb-3 {
+      bottom: -150px;
+      left: 25%;
+      width: 620px;
+      height: 620px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, rgba(245, 158, 11, 0.04) 55%, transparent 70%);
+      filter: blur(85px);
+      animation: floatOrb3 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatOrb1 {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(80px, 60px) scale(1.12);
+      }
+
+      100% {
+        transform: translate(-50px, 100px) scale(0.95);
+      }
+    }
+
+    @keyframes floatOrb2 {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-100px, -60px) scale(1.15);
+      }
+
+      100% {
+        transform: translate(-40px, 80px) scale(0.92);
+      }
+    }
+
+    @keyframes floatOrb3 {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(90px, -80px) scale(1.1);
+      }
+
+      100% {
+        transform: translate(-70px, -40px) scale(0.98);
+      }
+    }
+
+    /* Interactive Desktop Cursor Spotlight */
+    .cursor-spotlight {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(600px circle at var(--mouse-x, 50vw) var(--mouse-y, 30vh), rgba(245, 158, 11, 0.05), transparent 60%);
+      transition: background 0.05s linear;
+      opacity: 0;
+    }
+
+    @media (min-width: 1024px) {
+      .cursor-spotlight {
+        opacity: 1;
+      }
+    }
+
+    /* Interactive Micro-Particles Canvas */
+    .bg-particle-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.75;
+    }
+
+    .bg-grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.06) 0%, transparent 60%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+      background-size: 100% 100%, 64px 64px, 64px 64px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       TOP BAR & NAVIGATION DRAWER
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(12, 13, 16, 0.65);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.3s ease;
+    }
+
+    @media (min-width: 768px) {
+      .site-header {
+        padding: 0 3.5rem;
+      }
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-monogram {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      letter-spacing: 0.05em;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .brand-monogram span {
+      color: var(--primary);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #4ade80;
+    }
+
+    @media (max-width: 380px) {
+      .status-badge {
+        display: none !important;
+      }
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(1.3);
+      }
+    }
+
+    /* Hamburger Toggle Button */
+    .menu-toggle-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 60;
+    }
+
+    .menu-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-light);
+      transform: scale(1.05);
+    }
+
+    .menu-line {
+      width: 22px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .menu-toggle-btn.active .menu-line:nth-child(1) {
+      transform: translateY(3.5px) rotate(45deg);
+    }
+
+    .menu-toggle-btn.active .menu-line:nth-child(2) {
+      transform: translateY(-3.5px) rotate(-45deg);
+    }
+
+    /* Navigation Slide Drawer */
+    .nav-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      z-index: 55;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .nav-drawer-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 480px;
+      max-width: calc(100vw - 2rem);
+      height: 100dvh;
+      background: #101217;
+      border-left: 1px solid var(--border-subtle);
+      z-index: 58;
+      transform: translateX(100%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 6rem 2.5rem 3rem 2.5rem;
+      overflow-y: auto;
+    }
+
+    .nav-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--text-submuted);
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+    }
+
+    .drawer-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .drawer-menu-link {
+      font-size: 1.35rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+    }
+
+    .drawer-menu-link:hover {
+      color: var(--text-main);
+      transform: translateX(6px);
+    }
+
+    .drawer-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .drawer-menu-link:hover .drawer-dot {
+      transform: scale(1.6);
+    }
+
+    .drawer-socials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      list-style: none;
+    }
+
+    .drawer-socials a {
+      color: var(--text-muted);
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .drawer-socials a:hover {
+      color: var(--primary);
+    }
+
+    /* ==========================================================================
+       FIXED SIDEBAR WIDGETS (Desktop Left Email + Right Scroll Bar)
+       ========================================================================== */
+    .fixed-left-email {
+      display: none;
+      position: fixed;
+      bottom: 6rem;
+      left: 1.75rem;
+      z-index: 40;
+    }
+
+    .fixed-left-email a {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 0.82rem;
+      letter-spacing: 0.15em;
+      color: var(--text-submuted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .fixed-left-email a::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 48px;
+      background: var(--border-subtle);
+    }
+
+    .fixed-left-email a:hover {
+      color: var(--primary);
+    }
+
+    @media (min-width: 1280px) {
+      .fixed-left-email {
+        display: block;
+      }
+    }
+
+    .scroll-progress-container {
+      position: fixed;
+      top: 50%;
+      right: 1.5rem;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 120px;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      border-radius: 9999px;
+      z-index: 10000;
+      overflow: hidden;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      pointer-events: none;
+      box-shadow: none;
+    }
+
+    .scroll-progress-bar {
+      width: 100%;
+      height: 0%;
+      opacity: 0;
+      background: var(--primary);
+      border-radius: 9999px;
+      box-shadow: 0 0 10px #f59e0b;
+      transition: height 0.08s ease-out, opacity 0.2s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .scroll-progress-container {
+        right: 1.25rem;
+        height: 100px;
+        width: 4px;
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scroll-progress-container {
+        right: 1rem;
+        height: 90px;
+        width: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scroll-progress-container {
+        right: 0.65rem;
+        height: 80px;
+        width: 3.5px;
+        background: rgba(255, 255, 255, 0.12);
+        border: none;
+        box-shadow: none;
+      }
+    }
+
+    /* ==========================================================================
+       SECTION HEADINGS & SIGNATURE SPINNING STAR
+       ========================================================================== */
+    .section-header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2.5rem;
+    }
+
+    .rotating-star {
+      width: 22px;
+      height: 22px;
+      animation: spinFlower 12s linear infinite;
+      color: var(--primary);
+    }
+
+    @keyframes spinFlower {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .section-tag-text {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       HERO / BANNER SECTION
+       ========================================================================== */
+    .hero-section {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: 100px;
+      padding-bottom: 4rem;
+      overflow: hidden;
+    }
+
+    .hero-chevron-svg {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1.3fr 0.7fr;
+      }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.75rem, 8.5vw, 6.75rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title .highlight {
+      color: var(--primary);
+      display: block;
+    }
+
+    .hero-title .sub-word {
+      margin-left: clamp(0.5rem, 2vw, 1.5rem);
+      color: var(--text-main);
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-description strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Magnetic / Fill Button */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      height: 52px;
+      padding: 0 2.25rem;
+      background: var(--primary);
+      color: #0c0d10;
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: transform 0.25s ease, background 0.3s ease;
+      z-index: 1;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 150%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: #ffffff;
+      border-radius: 50%;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: -1;
+    }
+
+    .btn-primary:hover::before {
+      top: -20%;
+    }
+
+    .btn-primary:hover {
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      height: 52px;
+      padding: 0 1.75rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--border-light);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Stats column */
+    .hero-stats-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      backdrop-filter: blur(12px);
+      position: relative;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero-stats-card:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+
+    @media (max-width: 991px) {
+      .hero-stats-card {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        padding: 1.75rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ==========================================================================
+       ABOUT ME SECTION
+       ========================================================================== */
+    .about-lead-statement {
+      font-size: clamp(1.75rem, 3.8vw, 2.75rem);
+      font-weight: 300;
+      line-height: 1.35;
+      color: var(--text-main);
+      margin-bottom: 3.5rem;
+      max-width: 1050px;
+    }
+
+    .about-lead-statement span {
+      color: var(--primary);
+      font-weight: 400;
+    }
+
+    .about-divider-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 3rem;
+      color: var(--text-submuted);
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .about-content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .about-content-grid {
+        grid-template-columns: 5fr 7fr;
+      }
+    }
+
+    .about-author-name {
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-badge-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .about-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .about-paragraphs {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .about-paragraphs p strong {
+      color: var(--text-main);
+    }
+
+    /* ==========================================================================
+       MY STACK / SKILLS SECTION
+       ========================================================================== */
+    .stack-category-block {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 3.5rem;
+    }
+
+    .stack-category-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    @media (min-width: 768px) {
+      .stack-category-block {
+        grid-template-columns: 4fr 8fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .stack-category-name {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: var(--text-submuted);
+      line-height: 1;
+    }
+
+    .stack-badges-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .stack-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stack-badge:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .stack-icon {
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stack-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* ==========================================================================
+       EXPERIENCE SECTION
+       ========================================================================== */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .experience-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2.25rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card);
+      transform: translateY(-4px);
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .experience-card:hover::before {
+      opacity: 1;
+    }
+
+    .exp-company {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-period {
+      font-size: 0.85rem;
+      color: var(--text-submuted);
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .exp-role {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .exp-details {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ==========================================================================
+       SELECTED PROJECTS (Signature Tajmirul Style Interactive List)
+       ========================================================================== */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-row {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      transition: all 0.35s ease;
+      cursor: pointer;
+      display: block;
+    }
+
+    .project-row:first-child {
+      padding-top: 0;
+    }
+
+    .project-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .project-header-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .project-header-flex {
+        gap: 2rem;
+      }
+    }
+
+    .project-idx {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--text-submuted);
+      transition: color 0.3s ease;
+      min-width: 50px;
+    }
+
+    .project-row:hover .project-idx {
+      color: var(--primary);
+    }
+
+    .project-content-main {
+      flex: 1;
+    }
+
+    .project-title-link {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-main);
+      transition: all 0.4s ease;
+    }
+
+    .project-row:hover .project-title-link {
+      color: var(--primary);
+      transform: translateX(8px);
+    }
+
+    .project-arrow-icon {
+      opacity: 0;
+      transform: translate(-10px, 10px);
+      transition: all 0.35s ease;
+      color: var(--primary);
+    }
+
+    .project-row:hover .project-arrow-icon {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .project-subtitle {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-top: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc-text {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      max-width: 860px;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 0.75rem;
+    }
+
+    .project-tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .project-tag.highlight {
+      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--primary);
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    /* ==========================================================================
+       PROJECT CASE STUDY FULLSCREEN TAKEOVER VIEW
+       ========================================================================== */
+    .project-modal-view {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background-color: var(--bg-main);
+      overflow-y: auto;
+      overflow-x: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(24px) scale(0.99);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 0.35s ease;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .project-modal-view.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .project-detail-sticky-bar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      z-index: 60;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      background: rgba(12, 13, 16, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @media (min-width: 768px) {
+      .project-detail-sticky-bar {
+        padding: 0 3.5rem;
+      }
+    }
+
+    .project-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .project-breadcrumb a {
+      color: var(--text-submuted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .project-breadcrumb a:hover {
+      color: var(--primary);
+    }
+
+    .project-breadcrumb .crumb-sep {
+      color: var(--text-submuted);
+      opacity: 0.5;
+    }
+
+    .project-breadcrumb .current-title {
+      color: var(--text-main);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 240px;
+    }
+
+    @media (min-width: 640px) {
+      .project-breadcrumb .current-title {
+        max-width: 480px;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .project-breadcrumb .current-title {
+        max-width: calc(100vw - 140px);
+      }
+    }
+
+    .project-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-light);
+      color: var(--text-main);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .project-close-btn:hover {
+      background: var(--primary);
+      color: #0c0d10;
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .esc-badge {
+      display: none;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.7rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Show ESC badge and full button text on desktop devices with keyboards */
+    @media (min-width: 1024px) {
+      .esc-badge {
+        display: inline-block;
+      }
+    }
+
+    /* On tablet and mobile (< 1024px), hide the close button entirely (the '← Projects' breadcrumb handles returning) */
+    @media (max-width: 1023px) {
+      .project-close-btn {
+        display: none !important;
+      }
+    }
+
+    .project-detail-hero {
+      padding-top: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .project-detail-num-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-detail-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.75rem);
+      line-height: 1.02;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+    }
+
+    .project-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 2rem;
+    }
+
+    .project-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .project-meta-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-submuted);
+    }
+
+    .project-meta-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .project-meta-value.accent {
+      color: var(--primary);
+    }
+
+    .project-section-block {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .project-section-block:last-of-type {
+      border-bottom: none;
+    }
+
+    .project-section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-main);
+      transition: all 0.25s ease;
+    }
+
+    .tech-pill:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      background: var(--bg-card-hover);
+    }
+
+    .tech-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .project-detail-desc {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      max-width: 960px;
+    }
+
+    .project-detail-desc strong {
+      color: var(--text-main);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: all 0.25s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(245, 158, 11, 0.4);
+      background: var(--bg-card);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-text {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .highlight-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .highlight-card:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      background: var(--bg-card);
+      transform: translateY(-2px);
+    }
+
+    .highlight-num {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--primary);
+      line-height: 1;
+      min-width: 24px;
+    }
+
+    .highlight-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .highlight-text strong {
+      color: var(--text-main);
+    }
+
+    .role-callout-box {
+      background: linear-gradient(135deg, rgba(24, 27, 34, 0.95) 0%, rgba(20, 22, 28, 0.95) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .role-header-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .role-desc-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    .project-note-box {
+      margin-top: 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .project-nav-footer {
+      padding: 4rem 0 5rem 0;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 3rem;
+    }
+
+    .project-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .project-nav-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .project-nav-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .project-nav-btn:hover {
+      background: var(--bg-card);
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .project-nav-btn.next {
+      text-align: right;
+    }
+
+    .project-nav-dir {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-nav-btn.next .project-nav-dir {
+      justify-content: flex-end;
+    }
+
+    .project-nav-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--text-main);
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+
+    /* ==========================================================================
+       EDUCATION & AMBITIONS SECTION
+       ========================================================================== */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .edu-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2.25rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .edu-degree {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-institution {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .edu-year-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    /* Ambition Callout Card */
+    .ambition-card {
+      background: linear-gradient(135deg, rgba(24, 27, 34, 0.9) 0%, rgba(16, 18, 23, 0.9) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ambition-card::before {
+      content: '"';
+      position: absolute;
+      top: -20px;
+      right: 30px;
+      font-family: var(--font-display);
+      font-size: 12rem;
+      color: rgba(255, 255, 255, 0.03);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .ambition-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .ambition-text {
+      font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+      line-height: 1.6;
+      color: var(--text-main);
+      font-weight: 400;
+      max-width: 950px;
+    }
+
+    .ambition-text strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       CONTACT / FOOTER SECTION
+       ========================================================================== */
+    .footer-section {
+      text-align: center;
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+      border-top: 1px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .contact-sub {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-email-big {
+      font-family: var(--font-display);
+      font-size: clamp(1.25rem, 5.5vw, 4.5rem);
+      color: var(--text-main);
+      display: inline-block;
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      word-break: break-all;
+      overflow-wrap: anywhere;
+      max-width: 100%;
+    }
+
+    .contact-email-big:hover {
+      color: var(--primary);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 640px) {
+      .contact-email-big {
+        font-size: clamp(1.15rem, 5.5vw, 1.85rem);
+        word-break: break-all;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .contact-email-big {
+        font-size: 1.05rem;
+        word-break: break-all;
+      }
+    }
+
+    .social-links-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+    }
+
+    .social-btn:hover {
+      border-color: var(--primary);
+      color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom-credit {
+      font-size: 0.875rem;
+      color: var(--text-submuted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ==========================================================================
+       PRELOADER / CURTAIN INTRO
+       ========================================================================== */
+    .preloader-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+    }
+
+    .preloader-shutter {
+      height: 100%;
+      flex: 1;
+      background: #090a0d;
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .preloader-title-wrap {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 12vw, 10rem);
+      color: var(--text-main);
+      text-align: center;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .preloader-overlay.finished {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .preloader-overlay.finished .preloader-shutter {
+      transform: translateY(-100%);
+    }
+
+    /* ==========================================================================
+       INTERACTIVE CUSTOM CURSOR (Desktop)
+       ========================================================================== */
+    .custom-cursor {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid var(--primary);
+      background: rgba(245, 158, 11, 0.15);
+      border-radius: 50%;
+      position: fixed;
+      top: -100px;
+      left: -100px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease-out, width 0.25s ease, height 0.25s ease, background 0.25s ease, opacity 0.2s ease;
+    }
+
+    .custom-cursor.hovering {
+      width: 44px;
+      height: 44px;
+      background: rgba(245, 158, 11, 0.25);
+      border-color: #fff;
+    }
+
+    @media (min-width: 1024px) {
+      .custom-cursor {
+        display: block;
+      }
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #181b22;
+      border: 1px solid var(--primary);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       PREMIUM SCROLL REVEAL ANIMATION SYSTEM
+       ========================================================================== */
+    .fade-reveal {
+      opacity: 0;
+      transform: translateY(48px) scale(0.96);
+      filter: blur(5px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .fade-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .fade-reveal-left {
+      opacity: 0;
+      transform: translateX(-40px) scale(0.96);
+      filter: blur(5px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .fade-reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+    }
+
+    .fade-reveal-right {
+      opacity: 0;
+      transform: translateX(40px) scale(0.96);
+      filter: blur(5px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+
+    .fade-reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Stagger Delays (80ms - 150ms intervals) */
+    .delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    /* Accessibility: Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+
+      .fade-reveal,
+      .fade-reveal-left,
+      .fade-reveal-right {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Interactive Custom Cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- Background Ambient Glow Orbs -->
+  <div class="bg-glow-layer" aria-hidden="true">
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+  </div>
+
+  <!-- Interactive Cursor Spotlight Glow -->
+  <div class="cursor-spotlight" id="cursorSpotlight" aria-hidden="true"></div>
+
+  <!-- Background Interactive Particles Canvas -->
+  <canvas id="bgCanvas" class="bg-particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Background Decorative Grid -->
+  <div class="bg-grid-overlay"></div>
+
+  <!-- Toast Notification for Email Copy -->
+  <div class="toast-msg" id="toastMsg">Email copied to clipboard!</div>
+
+  <!-- Intro Preloader Curtain -->
+  <div class="preloader-overlay" id="preloader">
+    <div class="preloader-shutter" style="transition-delay: 0.05s;"></div>
+    <div class="preloader-shutter" style="transition-delay: 0.1s;"></div>
+    <div class="preloader-shutter" style="transition-delay: 0.15s;"></div>
+    <div class="preloader-shutter" style="transition-delay: 0.2s;"></div>
+    <div class="preloader-shutter" style="transition-delay: 0.25s;"></div>
+    <div class="preloader-title-wrap" id="preloaderText">YASER ARFATH</div>
+  </div>
+
+  <!-- Fixed Left Margin Email Link -->
+  <div class="fixed-left-email">
+    <a href="mailto:arafathyaser032@gmail.com" title="Send email to Yaser">arafathyaser032@gmail.com</a>
+  </div>
+
+  <!-- Fixed Right Scroll Progress Bar -->
+  <div class="scroll-progress-container">
+    <div class="scroll-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <a href="#banner" class="brand-logo" aria-label="Home">
+      <span class="brand-monogram">YA<span>.</span></span>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Open for Full-Time Roles</span>
+      </div>
+    </a>
+
+    <!-- Hamburger Button -->
+    <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="Toggle Menu">
+      <span class="menu-line"></span>
+      <span class="menu-line"></span>
+    </button>
+  </header>
+
+  <!-- Slide Drawer Navigation Backdrop & Panel -->
+  <div class="nav-drawer-backdrop" id="drawerBackdrop"></div>
+  <nav class="nav-drawer" id="navDrawer" aria-label="Main Navigation">
+    <div>
+      <p class="drawer-section-title">NAVIGATION MENU</p>
+      <ul class="drawer-menu-list">
+        <li>
+          <a href="#banner" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #f59e0b;"></span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about-me" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #3b82f6;"></span>
+            <span>About Me</span>
+          </a>
+        </li>
+        <li>
+          <a href="#my-stack" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #14b8a6;"></span>
+            <span>Tech Stack</span>
+          </a>
+        </li>
+        <li>
+          <a href="#my-experience" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #a855f7;"></span>
+            <span>Experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="#selected-projects" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #6366f1;"></span>
+            <span>Selected Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#education-goals" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #ec4899;"></span>
+            <span>Education &amp; Vision</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="drawer-menu-link drawer-nav-item">
+            <span class="drawer-dot" style="background-color: #10b981;"></span>
+            <span>Get in Touch</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="drawer-section-title">CONNECT DIRECTLY</p>
+      <ul class="drawer-socials">
+        <li>
+          <a href="https://github.com/YaserArfath320" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+              </path>
+              <path d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+            GitHub Profile
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/yaser-arfath-a90008280/?isSelfProfile=true" target="_blank"
+            rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            LinkedIn Profile
+          </a>
+        </li>
+        <li>
+          <a href="mailto:arafathyaser032@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            arafathyaser032@gmail.com
+          </a>
+        </li>
+      </ul>
+      <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-submuted);">Bengaluru, India</p>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ========================================================================
+         HERO BANNER SECTION
+         ======================================================================== -->
+    <section class="hero-section" id="banner">
+      <!-- Background Arrow Geometry Reference -->
+      <svg class="hero-chevron-svg" width="376" height="111" viewBox="0 0 376 111" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1V39.9286L188 110V70.6822L1 1Z" stroke="#f59e0b" stroke-width="1.5"></path>
+        <path d="M375 1V39.9286L188 110V70.6822L375 1Z" stroke="#f59e0b" stroke-width="1.5"></path>
+      </svg>
+
+      <div class="container">
+        <div class="hero-grid">
+          <!-- Left Column Content -->
+          <div>
+            <h1 class="hero-title">
+              <span class="highlight">FULL-STACK</span>
+              <span class="sub-word">DEVELOPER</span>
+            </h1>
+
+            <p class="hero-description">
+              Hi! I'm <strong>Yaser Arfath</strong> — a developer focused on building modern, user-friendly web
+              applications with <strong>React, JavaScript, Next.js</strong>, and emerging <strong>Agentic AI
+                technologies</strong> based in Bengaluru, India.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="mailto:arafathyaser032@gmail.com" class="btn-primary">
+                <span>Let's Connect</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+
+              <a href="#selected-projects" class="btn-ghost">
+                <span>View Projects</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted);">
+              <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%;"></span>
+              <span>Available for Frontend, Full-Stack &amp; AI-Driven Engineering Opportunities</span>
+            </div>
+          </div>
+
+          <!-- Right Column Stats & Quick Highlights -->
+          <div>
+            <div class="hero-stats-card">
+              <div class="stat-item">
+                <span class="stat-number">2+</span>
+                <span class="stat-label">Years Professional Experience</span>
+              </div>
+
+              <div class="stat-item">
+                <span class="stat-number">4+</span>
+                <span class="stat-label">Major Production Platforms</span>
+              </div>
+
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Production &amp; Usability Focus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ABOUT ME SECTION
+         ======================================================================== -->
+    <section class="section-py" id="about-me">
+      <div class="container">
+        <!-- Lead Philosophy Statement -->
+        <h2 class="about-lead-statement">
+          I believe in turning real-world requirements into <span>clean, responsive, and practical digital
+            experiences</span> that solve problems rather than just look good.
+        </h2>
+
+        <div class="about-divider-bar">
+          <span>THIS IS ME.</span>
+        </div>
+
+        <div class="about-content-grid">
+          <div>
+            <h3 class="about-author-name">Hi, I'm Yaser.</h3>
+          </div>
+
+          <div class="about-paragraphs">
+            <p>
+              I’m a developer focused on building modern, user-friendly web applications with <strong>React, JavaScript,
+                Next.js, and emerging AI technologies</strong>. I turn real-world requirements into clean, responsive,
+              and practical digital experiences that genuinely solve business and user problems.
+            </p>
+            <p>
+              I’m different in the way I approach development—I like to <strong>understand the problem deeply</strong>,
+              think through both the user journey and the underlying architecture, and build solutions that are
+              functional, maintainable, and purposeful.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         MY STACK SECTION
+         ======================================================================== -->
+    <section class="section-py" id="my-stack"
+      style="background: rgba(20, 22, 27, 0.4); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <!-- Spinning flower section header -->
+        <div class="section-header-tag">
+          <svg class="rotating-star" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"></path>
+          </svg>
+          <span class="section-tag-text">MY TECH STACK</span>
+        </div>
+
+        <!-- Category: Frontend -->
+        <div class="stack-category-block">
+          <div>
+            <h3 class="stack-category-name">FRONTEND</h3>
+          </div>
+          <div class="stack-badges-wrap">
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <g fill="#61DAFB">
+                    <circle cx="64" cy="64" r="11.4" />
+                    <path
+                      d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6-3.7.3-7.4.4-11.2.4-3.9 0-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10 1.6-3.3 3.4-6.7 5.3-10 1.8-3.2 3.9-6.4 6.1-9.6 3.7-.3 7.4-.4 11.2-.4 3.9 0 7.6.1 11.2.4 2.2 3.2 4.2 6.4 6 9.6 1.9 3.3 3.7 6.7 5.3 10-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3-3.4.8-7 1.4-10.8 1.9 1.2-1.9 2.5-3.9 3.6-6 1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3 2.3.1 4.6.2 6.9.2 2.3 0 4.6-.1 6.9-.2-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9 1.1-3.3 2.3-6.8 3.8-10.3 1.1 2 2.2 4.1 3.4 6.1 1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3 3.4-.8 7-1.4 10.8-1.9-1.2 1.9-2.5 3.9-3.6 6-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3-2.3-.1-4.6-.2-6.9-.2-2.3 0-4.6.1-6.9.2 2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9-1.1 3.3-2.3 6.8-3.8 10.3-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3 1-.6 2.2-.9 3.5-.9 6 0 13.5 4.9 21 12.3-3.5 3.8-7 8.2-10.4 13-5.8.5-11.3 1.4-16.5 2.5-.6-2.3-1-4.5-1.4-6.6zM7 64c0-4.7 5.7-9.7 15.7-13.4 2-.8 4.2-1.5 6.4-2.1 1.6 5 3.6 10.3 6 15.6-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64zm28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3.3-2.1.8-4.3 1.4-6.6 5.2 1.2 10.7 2 16.5 2.5 3.4 4.8 6.9 9.1 10.4 13-7.4 7.3-14.9 12.3-21 12.3-1.3 0-2.5-.3-3.5-.9zM96.3 93c1.7 10.5.3 17.9-3.8 20.3-1 .6-2.2.9-3.5.9-6 0-13.5-4.9-21-12.3 3.5-3.8 7-8.2 10.4-13 5.8-.5 11.3-1.4 16.5-2.5.6 2.3 1 4.5 1.4 6.6zm9-15.6c-2 .8-4.2 1.5-6.4 2.1-1.6-5-3.6-10.3-6-15.6 2.4-5.3 4.5-10.5 6-15.5 13.8 4 22.1 10 22.1 15.6 0 4.7-5.8 9.7-15.7 13.4z" />
+                  </g>
+                </svg>
+              </span>
+              <span>React</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 180 180" fill="none">
+                  <circle cx="90" cy="90" r="90" fill="#000000" />
+                  <path
+                    d="M149.508 157.438L69.147 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.137 149.508 157.438Z"
+                    fill="#FFFFFF" />
+                  <rect x="115" y="54" width="12" height="72" fill="#FFFFFF" />
+                </svg>
+              </span>
+              <span>Next.js 15</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill="#fff" d="M22.67 47h99.67v73.67H22.67z" />
+                  <path data-name="original" fill="#007acc"
+                    d="M1.5 63.91v62.5h125v-125H1.5zm100.73-5a15.56 15.56 0 017.82 4.5 20.58 20.58 0 013 4c0 .16-5.4 3.81-8.69 5.85-.12.08-.6-.44-1.13-1.23a7.09 7.09 0 00-5.87-3.53c-3.79-.26-6.23 1.73-6.21 5a4.58 4.58 0 00.54 2.34c.83 1.73 2.38 2.76 7.24 4.86 8.95 3.85 12.78 6.39 15.16 10 2.66 4 3.25 10.46 1.45 15.24-2 5.2-6.9 8.73-13.83 9.9a38.32 38.32 0 01-9.52-.1 23 23 0 01-12.72-6.63c-1.15-1.27-3.39-4.58-3.25-4.82a9.34 9.34 0 011.15-.73L82 101l3.59-2.08.75 1.11a16.78 16.78 0 004.74 4.54c4 2.1 9.46 1.81 12.16-.62a5.43 5.43 0 00.69-6.92c-1-1.39-3-2.56-8.59-5-6.45-2.78-9.23-4.5-11.77-7.24a16.48 16.48 0 01-3.43-6.25 25 25 0 01-.22-8c1.33-6.23 6-10.58 12.82-11.87a31.66 31.66 0 019.49.26zm-29.34 5.24v5.12H56.66v46.23H45.15V69.26H28.88v-5a49.19 49.19 0 01.12-5.17C29.08 59 39 59 51 59h21.83z" />
+                </svg>
+              </span>
+              <span>TypeScript</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 256 256" fill="none">
+                  <rect width="256" height="256" rx="32" fill="#F7DF1E" />
+                  <path
+                    d="M67 202.8c12.3 7.3 26.2 11.7 40.2 11.7 34.3 0 54.3-17.8 54.3-46.7v-70.5h-24.2v70.8c0 17.8-10.3 26.8-27.2 26.8-11.8 0-21.7-4.3-27.8-8.8l-15.3 16.7zm116.8-1.5c15.2 8.7 33 13.7 48.7 13.7 34.7 0 55.7-17.2 55.7-44.5 0-26-15.7-38.3-44.3-50.5l-6-2.5c-18.3-7.8-26.8-14.5-26.8-25.7 0-9.8 7.8-17.8 24.3-17.8 13.3 0 24.7 4.7 32.2 10.5l12.7-18.3c-11.7-8.7-27.7-13.8-44.8-13.8-32.8 0-51.5 18.2-51.5 43.3 0 25.5 16 38.3 43.5 50.2l6 2.5c19.3 8.3 28.5 15.7 28.5 27.5 0 11.5-9.8 19.3-26.8 19.3-16.5 0-29.3-6.5-38.5-14.2l-12.7 20.3z"
+                    transform="scale(0.8) translate(32, 28)" fill="#000000" />
+                </svg>
+              </span>
+              <span>JavaScript (ES6+)</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 256 154" fill="none">
+                  <path
+                    d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.736 2.434 16.697 9.499 24.401 17.318C145.753 62.062 161.446 78 192 78c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.736-2.434-16.697-9.499-24.401-17.318C174.247 15.938 158.554 0 128 0zM64 76C29.867 76 8.533 93.067 0 127.2 12.8 110.133 27.733 103.733 44.8 108c9.736 2.434 16.697 9.499 24.401 17.318C81.753 138.062 97.446 154 128 154c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.736-2.434-16.697-9.499-24.401-17.318C110.247 91.938 94.554 76 64 76z"
+                    fill="#38BDF8" />
+                </svg>
+              </span>
+              <span>Tailwind CSS</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 256 256" fill="none">
+                  <path d="M208 128l-80 80M128 48L48 128" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span>Shadcn UI</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill="#E44D26" d="M19.037 113.876L9.032 1.661h109.936l-10.016 112.198-45.019 12.48z" />
+                  <path fill="#F16529" d="M64 116.8l36.378-10.086 8.559-95.878H64z" />
+                  <path fill="#EBEBEB"
+                    d="M64 52.455H45.788L44.53 38.361H64V24.599H29.489l.33 3.692 3.382 37.927H64zm0 35.743l-.061.017-15.327-4.14-.979-10.975H33.816l1.928 21.609 28.193 7.826.063-.017z" />
+                  <path fill="#fff"
+                    d="M63.952 52.455v13.763h16.947l-1.597 17.849-15.35 4.143v14.319l28.215-7.82.207-2.325 3.234-36.233.335-3.696h-3.708zm0-27.856v13.762h33.244l.276-3.092.628-6.978.329-3.692z" />
+                </svg>
+              </span>
+              <span>HTML5 &amp; CSS3</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <defs>
+                    <linearGradient id="bs-a" x1="76.079" x2="523.48" y1="10.798" y2="365.95"
+                      gradientTransform="translate(1.11 14.613) scale(.24566)" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#9013fe" />
+                      <stop offset="1" stop-color="#6610f2" />
+                    </linearGradient>
+                    <linearGradient id="bs-b" x1="193.51" x2="293.51" y1="109.74" y2="278.87"
+                      gradientTransform="translate(0 52)" gradientUnits="userSpaceOnUse">
+                      <stop offset="0" stop-color="#fff" />
+                      <stop offset="1" stop-color="#f1e5fc" />
+                    </linearGradient>
+                    <filter id="bs-c" width="197" height="249" x="161.9" y="135.46" color-interpolation-filters="sRGB"
+                      filterUnits="userSpaceOnUse">
+                      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                      <feOffset dy="4" />
+                      <feGaussianBlur stdDeviation="8" />
+                      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
+                      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow" />
+                      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+                    </filter>
+                  </defs>
+                  <path fill="url(#bs-a)"
+                    d="M14.985 27.712c-.237-6.815 5.072-13.099 12.249-13.099h73.54c7.177 0 12.486 6.284 12.249 13.099-.228 6.546.068 15.026 2.202 21.94 2.141 6.936 5.751 11.319 11.664 11.883v6.387c-5.913.564-9.523 4.947-11.664 11.883-2.134 6.914-2.43 15.394-2.202 21.94.237 6.815-5.072 13.098-12.249 13.098h-73.54c-7.177 0-12.486-6.284-12.249-13.098.228-6.546-.068-15.026-2.203-21.94-2.14-6.935-5.76-11.319-11.673-11.883v-6.387c5.913-.563 9.533-4.947 11.673-11.883 2.135-6.914 2.43-15.394 2.203-21.94z" />
+                  <path fill="url(#bs-b)"
+                    d="M267.1 364.46c47.297 0 75.798-23.158 75.798-61.355 0-28.873-20.336-49.776-50.532-53.085v-1.203c22.185-3.609 39.594-24.211 39.594-47.219 0-32.783-25.882-54.138-65.322-54.138h-88.74v217zm-54.692-189.48h45.911c24.958 0 39.131 11.128 39.131 31.279 0 21.505-16.484 33.535-46.372 33.535h-38.67zm0 161.96v-71.431h45.602c32.661 0 49.608 12.03 49.608 35.49 0 23.459-16.484 35.941-47.605 35.941z"
+                    filter="url(#bs-c)" transform="translate(1.494 2.203) scale(.24566)" />
+                </svg>
+              </span>
+              <span>Bootstrap</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Backend -->
+        <div class="stack-category-block">
+          <div>
+            <h3 class="stack-category-name">BACKEND</h3>
+          </div>
+          <div class="stack-badges-wrap">
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill="#83CD29"
+                    d="M112.771 30.334L68.674 4.729c-2.781-1.584-6.402-1.584-9.205 0L14.901 30.334C12.031 31.985 10 35.088 10 38.407v51.142c0 3.319 2.084 6.423 4.954 8.083l11.775 6.688c5.628 2.772 7.617 2.772 10.178 2.772 8.333 0 13.093-5.039 13.093-13.828v-50.49c0-.713-.371-1.774-1.071-1.774h-5.623C42.594 41 41 42.061 41 42.773v50.49c0 3.896-3.524 7.773-10.11 4.48L18.723 90.73c-.424-.23-.723-.693-.723-1.181V38.407c0-.482.555-.966.982-1.213l44.424-25.561c.415-.235 1.025-.235 1.439 0l43.882 25.555c.42.253.272.722.272 1.219v51.142c0 .488.183.963-.232 1.198l-44.086 25.576c-.378.227-.847.227-1.261 0l-11.307-6.749c-.341-.198-.746-.269-1.073-.086-3.146 1.783-3.726 2.02-6.677 3.043-.726.253-1.797.692.41 1.929l14.798 8.754a9.294 9.294 0 004.647 1.246c1.642 0 3.25-.426 4.667-1.246l43.885-25.582c2.87-1.672 4.23-4.764 4.23-8.083V38.407c0-3.319-1.36-6.414-4.229-8.073zM77.91 81.445c-11.726 0-14.309-3.235-15.17-9.066-.1-.628-.633-1.379-1.272-1.379h-5.731c-.709 0-1.279.86-1.279 1.566 0 7.466 4.059 16.512 23.453 16.512 14.039 0 22.088-5.455 22.088-15.109 0-9.572-6.467-12.084-20.082-13.886-13.762-1.819-15.16-2.738-15.16-5.962 0-2.658 1.184-6.203 11.374-6.203 9.105 0 12.461 1.954 13.842 8.091.118.577.645.991 1.24.991h5.754c.354 0 .692-.143.94-.396.24-.272.367-.613.335-.979-.891-10.568-7.912-15.493-22.112-15.493-12.631 0-20.166 5.334-20.166 14.275 0 9.698 7.497 12.378 19.622 13.577 14.505 1.422 15.633 3.542 15.633 6.395 0 4.955-3.978 7.066-13.309 7.066z" />
+                </svg>
+              </span>
+              <span>Node.js</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill="#ffffff"
+                    d="M126.67 98.44c-4.56 1.16-7.38.05-9.91-3.75-5.68-8.51-11.95-16.63-18-24.9-.78-1.07-1.59-2.12-2.6-3.45C89 76 81.85 85.2 75.14 94.77c-2.4 3.42-4.92 4.91-9.4 3.7l26.92-36.13L67.6 29.71c4.31-.84 7.29-.41 9.93 3.45 5.83 8.52 12.26 16.63 18.67 25.21 6.45-8.55 12.8-16.67 18.8-25.11 2.41-3.42 5-4.72 9.33-3.46-3.28 4.35-6.49 8.63-9.72 12.88-4.36 5.73-8.64 11.53-13.16 17.14-1.61 2-1.35 3.3.09 5.19C109.9 76 118.16 87.1 126.67 98.44zM1.33 61.74c.72-3.61 1.2-7.29 2.2-10.83 6-21.43 30.6-30.34 47.5-17.06C60.93 41.64 63.39 52.62 62.9 65H7.1c-.84 22.21 15.15 35.62 35.53 28.78 7.15-2.4 11.36-8 13.47-15 1.07-3.51 2.84-4.06 6.14-3.06-1.69 8.76-5.52 16.08-13.52 20.66-12 6.86-29.13 4.64-38.14-4.89C5.26 85.89 3 78.92 2 71.39c-.15-1.2-.46-2.38-.7-3.57q.03-3.04.03-6.08zm5.87-1.49h50.43c-.33-16.06-10.33-27.47-24-27.57-15-.12-25.78 11.02-26.43 27.57z" />
+                </svg>
+              </span>
+              <span>Express.js</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <linearGradient id="py-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659"
+                    y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                    <stop offset="0" stop-color="#5A9FD4" />
+                    <stop offset="1" stop-color="#306998" />
+                  </linearGradient>
+                  <linearGradient id="py-b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62"
+                    y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                    <stop offset="0" stop-color="#FFD43B" />
+                    <stop offset="1" stop-color="#FFE873" />
+                  </linearGradient>
+                  <path fill="url(#py-a)"
+                    d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"
+                    transform="translate(0 10.26)" />
+                  <path fill="url(#py-b)"
+                    d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"
+                    transform="translate(0 10.26)" />
+                  <radialGradient id="py-c" cx="1825.678" cy="444.45" r="26.743"
+                    gradientTransform="matrix(0 -.24 -1.055 0 532.979 557.576)" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#B8B8B8" stop-opacity=".498" />
+                    <stop offset="1" stop-color="#7F7F7F" stop-opacity="0" />
+                  </radialGradient>
+                  <path opacity=".444" fill="url(#py-c)"
+                    d="M97.309 119.597c0 3.543-14.816 6.416-33.091 6.416-18.276 0-33.092-2.873-33.092-6.416 0-3.544 14.815-6.417 33.092-6.417 18.275 0 33.091 2.872 33.091 6.417z" />
+                </svg>
+              </span>
+              <span>Python</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path
+                    d="M56.813 127.586c-1.903-.227-3.899-.52-4.434-.652a48.078 48.078 0 00-2.375-.5 36.042 36.042 0 01-2.703-.633c-4.145-1.188-4.442-1.285-7.567-2.563-2.875-1.172-8.172-3.91-9.984-5.156-.496-.344-.96-.621-1.031-.621-.07 0-1.23-.816-2.578-1.813-8.57-6.343-15.004-14.043-19.653-23.527-.8-1.629-1.453-3.074-1.453-3.21 0-.134-.144-.505-.32-.817-.363-.649-.88-2.047-1.297-3.492a20.047 20.047 0 00-.625-1.813c-.195-.46-.352-1.02-.352-1.246 0-.227-.195-.965-.433-1.645-.238-.675-.43-1.472-.43-1.77 0-.296-.187-1.32-.418-2.276C.598 73.492 0 67.379 0 63.953c0-3.422.598-9.535 1.16-11.894.23-.957.418-2 .418-2.32 0-.321.145-.95.32-1.4.18-.448.41-1.253.516-1.788.11-.535.36-1.457.563-2.055l.59-1.726c.433-1.293.835-2.387 1.027-2.813.11-.238.539-1.21.957-2.16.676-1.535 2.125-4.43 2.972-5.945.309-.555.426-.739 2.098-3.352 2.649-4.148 7.176-9.309 11.39-12.988 1.485-1.297 6.446-5.063 6.669-5.063.062 0 .53-.281 1.043-.625 1.347-.902 2.668-1.668 4.39-2.531a53.06 53.06 0 001.836-.953c.285-.164.82-.41 3.567-1.64.605-.27 1.257-.516 3.136-1.173.414-.144 1.246-.449 1.84-.672.598-.222 1.301-.406 1.563-.406.258 0 .937-.18 1.508-.402.57-.223 1.605-.477 2.304-.563.696-.082 1.621-.277 2.055-.43.43-.148 1.61-.34 2.621-.425a72.572 72.572 0 003.941-.465c2.688-.394 8.532-.394 11.192 0a75.02 75.02 0 003.781.445c.953.079 2.168.278 2.703.442.535.16 1.461.36 2.055.433.594.079 1.594.325 2.222.551.63.23 1.344.414 1.59.414s.754.137 1.125.309c.375.168 1.168.449 1.766.625.594.18 1.613.535 2.27.797.652.261 1.527.605 1.945.761.77.29 6.46 3.137 7.234 3.622 6.281 3.917 9.512 6.476 13.856 10.964 5.238 5.414 8.715 10.57 12.254 18.16.25.536.632 1.329.851 1.758.215.434.395.942.395 1.13 0 .19.18.76.402 1.269.602 1.383 1.117 2.957 1.36 4.16.12.59.343 1.32.495 1.621.153.3.332 1.063.403 1.688.07.624.277 1.648.453 2.269 1.02 3.531 1.527 13.934.91 18.535-.183 1.367-.39 3.02-.46 3.672-.118 1.117-.708 4.004-1.212 5.945l-.52 2.055c-.98 3.957-3.402 9.594-6.359 14.809-1.172 2.07-5.101 7.668-5.843 8.324-.067.058-.399.45-.735.863-.336.418-1.414 1.586-2.39 2.594-4.301 4.441-7.77 7.187-13.86 10.969-.722.449-6.847 3.441-7.992 3.906-.594.238-1.586.64-2.203.89-.613.247-1.297.454-1.512.458-.215.003-.781.195-1.258.425-.476.23-1.082.422-1.351.426-.266.004-1.043.192-1.727.418-.683.23-1.633.477-2.11.55-.476.075-1.495.278-2.269.45-.773.172-3.11.508-5.187.746a59.06 59.06 0 01-13.945-.031zm4.703-12.5c.3-.234.609-.7.691-1.027.18-.723 29.234-58.97 29.781-59.7.461-.617.504-1.605.082-1.953-.222-.187-3.004-.246-10.43-.234-5.57.012-10.253.016-10.406.012-.226-.008-.273-3.73-.25-19.672.016-10.817-.035-19.766-.113-19.89-.078-.126-.383-.227-.68-.227-.418 0-.613.18-.87.808-.485 1.168-1.825 3.82-8.348 16.485a3554.569 3554.569 0 00-4.055 7.89c-1.156 2.262-2.98 5.813-4.047 7.89a8751.248 8751.248 0 00-8.598 16.759c-4.933 9.636-5.53 10.785-5.742 11.039-.41.496-.633 1.64-.402 2.07.21.394.629.41 11.043.394 5.953-.007 10.863.024 10.914.07.137.141.086 37.31-.055 38.196-.093.582-.031.89.235 1.156.46.461.586.457 1.25-.066zm0 0"
+                    fill="#049688" />
+                </svg>
+              </span>
+              <span>FastAPI</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg version="1.0" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" fill="#44B78B">
+                  <path
+                    d="M59.448 0h20.93v96.88c-10.737 2.04-18.62 2.855-27.181 2.855-25.551-.001-38.87-11.551-38.87-33.705 0-21.338 14.135-35.2 36.015-35.2 3.398 0 5.98.272 9.106 1.087zm0 48.765c-2.446-.815-4.485-1.086-7.067-1.086-10.6 0-16.717 6.523-16.717 17.939 0 11.145 5.845 17.26 16.582 17.26 2.309 0 4.212-.136 7.202-.542z" />
+                  <path
+                    d="M113.672 32.321V80.84c0 16.717-1.224 24.735-4.893 31.666-3.398 6.661-7.883 10.873-17.124 15.494l-19.435-9.241c9.242-4.35 13.726-8.153 16.58-14 2.99-5.979 3.943-12.91 3.943-31.122V32.321zM92.742.111h20.93v21.474h-20.93z" />
+                </svg>
+              </span>
+              <span>Django</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+              </span>
+              <span>RESTful APIs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Database -->
+        <div class="stack-category-block">
+          <div>
+            <h3 class="stack-category-name">DATABASE</h3>
+          </div>
+          <div class="stack-badges-wrap">
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path
+                    d="M93.809 92.112c.785-6.533.55-7.492 5.416-6.433l1.235.108c3.742.17 8.637-.602 11.513-1.938 6.191-2.873 9.861-7.668 3.758-6.409-13.924 2.873-14.881-1.842-14.881-1.842 14.703-21.815 20.849-49.508 15.543-56.287-14.47-18.489-39.517-9.746-39.936-9.52l-.134.025c-2.751-.571-5.83-.912-9.289-.968-6.301-.104-11.082 1.652-14.709 4.402 0 0-44.683-18.409-42.604 23.151.442 8.841 12.672 66.898 27.26 49.362 5.332-6.412 10.484-11.834 10.484-11.834 2.558 1.699 5.622 2.567 8.834 2.255l.249-.212c-.078.796-.044 1.575.099 2.497-3.757 4.199-2.653 4.936-10.166 6.482-7.602 1.566-3.136 4.355-.221 5.084 3.535.884 11.712 2.136 17.238-5.598l-.22.882c1.474 1.18 1.375 8.477 1.583 13.69.209 5.214.558 10.079 1.621 12.948 1.063 2.868 2.317 10.256 12.191 8.14 8.252-1.764 14.561-4.309 15.136-27.985" />
+                  <path
+                    d="M75.458 125.256c-4.367 0-7.211-1.689-8.938-3.32-2.607-2.46-3.641-5.629-4.259-7.522l-.267-.79c-1.244-3.358-1.666-8.193-1.916-14.419-.038-.935-.064-1.898-.093-2.919-.021-.747-.047-1.684-.085-2.664a18.8 18.8 0 01-4.962 1.568c-3.079.526-6.389.356-9.84-.507-2.435-.609-4.965-1.871-6.407-3.82-4.203 3.681-8.212 3.182-10.396 2.453-3.853-1.285-7.301-4.896-10.542-11.037-2.309-4.375-4.542-10.075-6.638-16.943-3.65-11.96-5.969-24.557-6.175-28.693C4.292 23.698 7.777 14.44 15.296 9.129 27.157.751 45.128 5.678 51.68 7.915c4.402-2.653 9.581-3.944 15.433-3.851 3.143.051 6.136.327 8.916.823 2.9-.912 8.628-2.221 15.185-2.139 12.081.144 22.092 4.852 28.949 13.615 4.894 6.252 2.474 19.381.597 26.651-2.642 10.226-7.271 21.102-12.957 30.57 1.544.011 3.781-.174 6.961-.831 6.274-1.295 8.109 2.069 8.607 3.575 1.995 6.042-6.677 10.608-9.382 11.864-3.466 1.609-9.117 2.589-13.745 2.377l-.202-.013-1.216-.107-.12 1.014-.116.991c-.311 11.999-2.025 19.598-5.552 24.619-3.697 5.264-8.835 6.739-13.361 7.709-1.544.33-2.947.474-4.219.474zm-9.19-43.671c2.819 2.256 3.066 6.501 3.287 14.434.028.99.054 1.927.089 2.802.106 2.65.355 8.855 1.327 11.477.137.371.26.747.39 1.146 1.083 3.316 1.626 4.979 6.309 3.978 3.931-.843 5.952-1.599 7.534-3.851 2.299-3.274 3.585-9.86 3.821-19.575l4.783.116-4.75-.57.14-1.186c.455-3.91.783-6.734 3.396-8.602 2.097-1.498 4.486-1.353 6.389-1.01-2.091-1.58-2.669-3.433-2.823-4.193l-.399-1.965 1.121-1.663c6.457-9.58 11.781-21.354 14.609-32.304 2.906-11.251 2.02-17.226 1.134-18.356-11.729-14.987-32.068-8.799-34.192-8.097l-.359.194-1.8.335-.922-.191c-2.542-.528-5.366-.82-8.393-.869-4.756-.08-8.593 1.044-11.739 3.431l-2.183 1.655-2.533-1.043c-5.412-2.213-21.308-6.662-29.696-.721-4.656 3.298-6.777 9.76-6.305 19.207.156 3.119 2.275 14.926 5.771 26.377 4.831 15.825 9.221 21.082 11.054 21.693.32.108 1.15-.537 1.976-1.529a270.708 270.708 0 0110.694-12.07l2.77-2.915 3.349 2.225c1.35.897 2.839 1.406 4.368 1.502l7.987-6.812-1.157 11.808c-.026.265-.039.626.065 1.296l.348 2.238-1.51 1.688-.174.196 4.388 2.025 1.836-2.301z" />
+                  <path fill="#336791"
+                    d="M115.731 77.44c-13.925 2.873-14.882-1.842-14.882-1.842 14.703-21.816 20.849-49.51 15.545-56.287C101.924.823 76.875 9.566 76.457 9.793l-.135.024c-2.751-.571-5.83-.911-9.291-.967-6.301-.103-11.08 1.652-14.707 4.402 0 0-44.684-18.408-42.606 23.151.442 8.842 12.672 66.899 27.26 49.363 5.332-6.412 10.483-11.834 10.483-11.834 2.559 1.699 5.622 2.567 8.833 2.255l.25-.212c-.078.796-.042 1.575.1 2.497-3.758 4.199-2.654 4.936-10.167 6.482-7.602 1.566-3.136 4.355-.22 5.084 3.534.884 11.712 2.136 17.237-5.598l-.221.882c1.473 1.18 2.507 7.672 2.334 13.557-.174 5.885-.29 9.926.871 13.082 1.16 3.156 2.316 10.256 12.192 8.14 8.252-1.768 12.528-6.351 13.124-13.995.422-5.435 1.377-4.631 1.438-9.49l.767-2.3c.884-7.367.14-9.743 5.225-8.638l1.235.108c3.742.17 8.639-.602 11.514-1.938 6.19-2.871 9.861-7.667 3.758-6.408z" />
+                  <path fill="#fff"
+                    d="M75.957 122.307c-8.232 0-10.84-6.519-11.907-9.185-1.562-3.907-1.899-19.069-1.551-31.503a1.59 1.59 0 011.64-1.55 1.594 1.594 0 011.55 1.639c-.401 14.341.168 27.337 1.324 30.229 1.804 4.509 4.54 8.453 12.275 6.796 7.343-1.575 10.093-4.359 11.318-11.46.94-5.449 2.799-20.951 3.028-24.01a1.593 1.593 0 011.71-1.472 1.597 1.597 0 011.472 1.71c-.239 3.185-2.089 18.657-3.065 24.315-1.446 8.387-5.185 12.191-13.794 14.037-1.463.313-2.792.453-4 .454zM31.321 90.466a6.71 6.71 0 01-2.116-.35c-5.347-1.784-10.44-10.492-15.138-25.885-3.576-11.717-5.842-23.947-6.041-27.922-.589-11.784 2.445-20.121 9.02-24.778 13.007-9.216 34.888-.44 35.813-.062a1.596 1.596 0 01-1.207 2.955c-.211-.086-21.193-8.492-32.768-.285-5.622 3.986-8.203 11.392-7.672 22.011.167 3.349 2.284 15.285 5.906 27.149 4.194 13.742 8.967 22.413 13.096 23.79.648.216 2.62.873 5.439-2.517A245.272 245.272 0 0145.88 73.046a1.596 1.596 0 012.304 2.208c-.048.05-4.847 5.067-10.077 11.359-2.477 2.979-4.851 3.853-6.786 3.853zm69.429-13.445a1.596 1.596 0 01-1.322-2.487c14.863-22.055 20.08-48.704 15.612-54.414-5.624-7.186-13.565-10.939-23.604-11.156-7.433-.16-13.341 1.738-14.307 2.069l-.243.099c-.971.305-1.716-.227-1.997-.849a1.6 1.6 0 01.631-2.025c.046-.027.192-.089.429-.176l-.021.006.021-.007c1.641-.601 7.639-2.4 15.068-2.315 11.108.118 20.284 4.401 26.534 12.388 2.957 3.779 2.964 12.485.019 23.887-3.002 11.625-8.651 24.118-15.497 34.277-.306.457-.81.703-1.323.703zm.76 10.21c-2.538 0-4.813-.358-6.175-1.174-1.4-.839-1.667-1.979-1.702-2.584-.382-6.71 3.32-7.878 5.208-8.411-.263-.398-.637-.866-1.024-1.349-1.101-1.376-2.609-3.26-3.771-6.078-.182-.44-.752-1.463-1.412-2.648-3.579-6.418-11.026-19.773-6.242-26.612 2.214-3.165 6.623-4.411 13.119-3.716C97.6 28.837 88.5 10.625 66.907 10.271c-6.494-.108-11.82 1.889-15.822 5.93-8.96 9.049-8.636 25.422-8.631 25.586a1.595 1.595 0 11-3.19.084c-.02-.727-.354-17.909 9.554-27.916C53.455 9.272 59.559 6.96 66.96 7.081c13.814.227 22.706 7.25 27.732 13.101 5.479 6.377 8.165 13.411 8.386 15.759.165 1.746-1.088 2.095-1.341 2.147l-.576.013c-6.375-1.021-10.465-.312-12.156 2.104-3.639 5.201 3.406 17.834 6.414 23.229.768 1.376 1.322 2.371 1.576 2.985.988 2.396 2.277 4.006 3.312 5.3.911 1.138 1.7 2.125 1.982 3.283.131.23 1.99 2.98 13.021.703 2.765-.57 4.423-.083 4.93 1.45.997 3.015-4.597 6.532-7.694 7.97-2.775 1.29-7.204 2.106-11.036 2.106zm-4.696-4.021c.35.353 2.101.962 5.727.806 3.224-.138 6.624-.839 8.664-1.786 2.609-1.212 4.351-2.567 5.253-3.492l-.5.092c-7.053 1.456-12.042 1.262-14.828-.577a6.162 6.162 0 01-.54-.401c-.302.119-.581.197-.78.253-1.58.443-3.214.902-2.996 5.105zm-45.562 8.915c-1.752 0-3.596-.239-5.479-.71-1.951-.488-5.24-1.957-5.19-4.37.057-2.707 3.994-3.519 5.476-3.824 5.354-1.103 5.703-1.545 7.376-3.67.488-.619 1.095-1.39 1.923-2.314 1.229-1.376 2.572-2.073 3.992-2.073.989 0 1.8.335 2.336.558 1.708.708 3.133 2.42 3.719 4.467.529 1.847.276 3.625-.71 5.006-3.237 4.533-7.886 6.93-13.443 6.93zm-7.222-4.943c.481.372 1.445.869 2.518 1.137 1.631.408 3.213.615 4.705.615 4.546 0 8.196-1.882 10.847-5.594.553-.774.387-1.757.239-2.274-.31-1.083-1.08-2.068-1.873-2.397-.43-.178-.787-.314-1.115-.314-.176 0-.712 0-1.614 1.009a41.146 41.146 0 00-1.794 2.162c-2.084 2.646-3.039 3.544-9.239 4.821-1.513.31-2.289.626-2.674.835zm12.269-7.36a1.596 1.596 0 01-1.575-1.354 8.218 8.218 0 01-.08-.799c-4.064-.076-7.985-1.82-10.962-4.926-3.764-3.927-5.477-9.368-4.699-14.927.845-6.037.529-11.366.359-14.229-.047-.796-.081-1.371-.079-1.769.003-.505.013-1.844 4.489-4.113 1.592-.807 4.784-2.215 8.271-2.576 5.777-.597 9.585 1.976 10.725 7.246 3.077 14.228.244 20.521-1.825 25.117-.385.856-.749 1.664-1.04 2.447l-.257.69c-1.093 2.931-2.038 5.463-1.748 7.354a1.595 1.595 0 01-1.335 1.819l-.244.02zM42.464 42.26l.062 1.139c.176 2.974.504 8.508-.384 14.86-.641 4.585.759 9.06 3.843 12.276 2.437 2.542 5.644 3.945 8.94 3.945h.068c.369-1.555.982-3.197 1.642-4.966l.255-.686c.329-.884.714-1.74 1.122-2.646 1.991-4.424 4.47-9.931 1.615-23.132-.565-2.615-1.936-4.128-4.189-4.627-4.628-1.022-11.525 2.459-12.974 3.837zm9.63-.677c-.08.564 1.033 2.07 2.485 2.271 1.449.203 2.689-.975 2.768-1.539.079-.564-1.033-1.186-2.485-1.388-1.451-.202-2.691.092-2.768.656zm2.818 2.826l-.407-.028c-.9-.125-1.81-.692-2.433-1.518-.219-.29-.576-.852-.505-1.354.101-.736.999-1.177 2.4-1.177.313 0 .639.023.967.069.766.106 1.477.327 2.002.62.91.508.977 1.075.936 1.368-.112.813-1.405 2.02-2.96 2.02zm-2.289-2.732c.045.348.907 1.496 2.029 1.651l.261.018c1.036 0 1.81-.815 1.901-1.082-.096-.182-.762-.634-2.025-.81a5.823 5.823 0 00-.821-.059c-.812 0-1.243.183-1.345.282zm43.605-1.245c.079.564-1.033 2.07-2.484 2.272-1.45.202-2.691-.975-2.771-1.539-.076-.564 1.036-1.187 2.486-1.388 1.45-.203 2.689.092 2.769.655zm-2.819 2.56c-1.396 0-2.601-1.086-2.7-1.791-.115-.846 1.278-1.489 2.712-1.688.316-.044.629-.066.93-.066 1.238 0 2.058.363 2.14.949.053.379-.238.964-.739 1.492-.331.347-1.026.948-1.973 1.079l-.37.025zm.943-3.013c-.276 0-.564.021-.856.061-1.441.201-2.301.779-2.259 1.089.048.341.968 1.332 2.173 1.332l.297-.021c.787-.109 1.378-.623 1.66-.919.443-.465.619-.903.598-1.052-.028-.198-.56-.49-1.613-.49zm3.965 32.843a1.594 1.594 0 01-1.324-2.483c3.398-5.075 2.776-10.25 2.175-15.255-.257-2.132-.521-4.337-.453-6.453.07-2.177.347-3.973.614-5.71.317-2.058.617-4.002.493-6.31a1.595 1.595 0 113.186-.172c.142 2.638-.197 4.838-.525 6.967-.253 1.643-.515 3.342-.578 5.327-.061 1.874.178 3.864.431 5.97.64 5.322 1.365 11.354-2.691 17.411a1.596 1.596 0 01-1.328.708z" />
+                </svg>
+              </span>
+              <span>PostgreSQL</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M21.362 9.354H12V.5L2.638 14.646H12v8.854l9.362-14.146z" fill="#3ECF8E" />
+                </svg>
+              </span>
+              <span>Supabase</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 24 24" fill="#FFFFFF">
+                  <path
+                    d="M21.5 17.2L13.2 2.8c-.5-.9-1.9-.9-2.4 0L2.5 17.2c-.5.9.1 2.1 1.2 2.1h16.6c1.1 0 1.7-1.2 1.2-2.1zM12 5.5l6.5 11.3H5.5L12 5.5z" />
+                </svg>
+              </span>
+              <span>Prisma ORM</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill="#00618A"
+                    d="M116.948 97.807c-6.863-.187-12.104.452-16.585 2.341-1.273.537-3.305.552-3.513 2.147.7.733.809 1.829 1.365 2.731 1.07 1.73 2.876 4.052 4.488 5.268 1.762 1.33 3.577 2.751 5.465 3.902 3.358 2.047 7.107 3.217 10.34 5.268 1.906 1.21 3.799 2.733 5.658 4.097.92.675 1.537 1.724 2.732 2.147v-.194c-.628-.8-.79-1.898-1.366-2.733l-2.537-2.537c-2.48-3.292-5.629-6.184-8.976-8.585-2.669-1.916-8.642-4.504-9.755-7.609l-.195-.195c1.892-.214 4.107-.898 5.854-1.367 2.934-.786 5.556-.583 8.585-1.365l4.097-1.171v-.78c-1.531-1.571-2.623-3.651-4.292-5.073-4.37-3.72-9.138-7.437-14.048-10.537-2.724-1.718-6.089-2.835-8.976-4.292-.971-.491-2.677-.746-3.318-1.562-1.517-1.932-2.342-4.382-3.511-6.633-2.449-4.717-4.854-9.868-7.024-14.831-1.48-3.384-2.447-6.72-4.293-9.756-8.86-14.567-18.396-23.358-33.169-32-3.144-1.838-6.929-2.563-10.929-3.513-2.145-.129-4.292-.26-6.438-.391-1.311-.546-2.673-2.149-3.902-2.927C17.811 4.565 5.257-2.16 1.633 6.682c-2.289 5.581 3.421 11.025 5.462 13.854 1.434 1.982 3.269 4.207 4.293 6.438.674 1.467.79 2.938 1.367 4.489 1.417 3.822 2.652 7.98 4.487 11.511.927 1.788 1.949 3.67 3.122 5.268.718.981 1.951 1.413 2.145 2.927-1.204 1.686-1.273 4.304-1.95 6.44-3.05 9.615-1.899 21.567 2.537 28.683 1.36 2.186 4.567 6.871 8.975 5.073 3.856-1.57 2.995-6.438 4.098-10.732.249-.973.096-1.689.585-2.341v.195l3.513 7.024c2.6 4.187 7.212 8.562 11.122 11.514 2.027 1.531 3.623 4.177 6.244 5.073v-.196h-.195c-.508-.791-1.303-1.119-1.951-1.755-1.527-1.497-3.225-3.358-4.487-5.073-3.556-4.827-6.698-10.11-9.561-15.609-1.368-2.627-2.557-5.523-3.709-8.196-.444-1.03-.438-2.589-1.364-3.122-1.263 1.958-3.122 3.542-4.098 5.854-1.561 3.696-1.762 8.204-2.341 12.878-.342.122-.19.038-.391.194-2.718-.655-3.672-3.452-4.683-5.853-2.554-6.07-3.029-15.842-.781-22.829.582-1.809 3.21-7.501 2.146-9.172-.508-1.666-2.184-2.63-3.121-3.903-1.161-1.574-2.319-3.646-3.124-5.464-2.09-4.731-3.066-10.044-5.267-14.828-1.053-2.287-2.832-4.602-4.293-6.634-1.617-2.253-3.429-3.912-4.683-6.635-.446-.968-1.051-2.518-.391-3.513.21-.671.508-.951 1.171-1.17 1.132-.873 4.284.29 5.462.779 3.129 1.3 5.741 2.538 8.392 4.294 1.271.844 2.559 2.475 4.097 2.927h1.756c2.747.631 5.824.195 8.391.975 4.536 1.378 8.601 3.523 12.292 5.854 11.246 7.102 20.442 17.21 26.732 29.269 1.012 1.942 1.45 3.794 2.341 5.854 1.798 4.153 4.063 8.426 5.852 12.488 1.786 4.052 3.526 8.141 6.05 11.513 1.327 1.772 6.451 2.723 8.781 3.708 1.632.689 4.307 1.409 5.854 2.34 2.953 1.782 5.815 3.903 8.586 5.855 1.383.975 5.64 3.116 5.852 4.879zM29.729 23.466c-1.431-.027-2.443.156-3.513.389v.195h.195c.683 1.402 1.888 2.306 2.731 3.513.65 1.367 1.301 2.732 1.952 4.097l.194-.193c1.209-.853 1.762-2.214 1.755-4.294-.484-.509-.555-1.147-.975-1.755-.556-.811-1.635-1.272-2.339-1.952z" />
+                </svg>
+              </span>
+              <span>MySQL</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#439934"
+                    d="M88.038 42.812c1.605 4.643 2.761 9.383 3.141 14.296.472 6.095.256 12.147-1.029 18.142-.035.165-.109.32-.164.48-.403.001-.814-.049-1.208.012-3.329.523-6.655 1.065-9.981 1.604-3.438.557-6.881 1.092-10.313 1.687-1.216.21-2.721-.041-3.212 1.641-.014.046-.154.054-.235.08l.166-10.051-.169-24.252 1.602-.275c2.62-.429 5.24-.864 7.862-1.281 3.129-.497 6.261-.98 9.392-1.465 1.381-.215 2.764-.412 4.148-.618z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#45A538"
+                    d="M61.729 110.054c-1.69-1.453-3.439-2.842-5.059-4.37-8.717-8.222-15.093-17.899-18.233-29.566-.865-3.211-1.442-6.474-1.627-9.792-.13-2.322-.318-4.665-.154-6.975.437-6.144 1.325-12.229 3.127-18.147l.099-.138c.175.233.427.439.516.702 1.759 5.18 3.505 10.364 5.242 15.551 5.458 16.3 10.909 32.604 16.376 48.9.107.318.384.579.583.866l-.87 2.969z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#46A037"
+                    d="M88.038 42.812c-1.384.206-2.768.403-4.149.616-3.131.485-6.263.968-9.392 1.465-2.622.417-5.242.852-7.862 1.281l-1.602.275-.012-1.045c-.053-.859-.144-1.717-.154-2.576-.069-5.478-.112-10.956-.18-16.434-.042-3.429-.105-6.857-.175-10.285-.043-2.13-.089-4.261-.185-6.388-.052-1.143-.236-2.28-.311-3.423-.042-.657.016-1.319.029-1.979.817 1.583 1.616 3.178 2.456 4.749 1.327 2.484 3.441 4.314 5.344 6.311 7.523 7.892 12.864 17.068 16.193 27.433z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#409433"
+                    d="M65.036 80.753c.081-.026.222-.034.235-.08.491-1.682 1.996-1.431 3.212-1.641 3.432-.594 6.875-1.13 10.313-1.687 3.326-.539 6.652-1.081 9.981-1.604.394-.062.805-.011 1.208-.012-.622 2.22-1.112 4.488-1.901 6.647-.896 2.449-1.98 4.839-3.131 7.182a49.142 49.142 0 01-6.353 9.763c-1.919 2.308-4.058 4.441-6.202 6.548-1.185 1.165-2.582 2.114-3.882 3.161l-.337-.23-1.214-1.038-1.256-2.753a41.402 41.402 0 01-1.394-9.838l.023-.561.171-2.426c.057-.828.133-1.655.168-2.485.129-2.982.241-5.964.359-8.946z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#4FAA41"
+                    d="M65.036 80.753c-.118 2.982-.23 5.964-.357 8.947-.035.83-.111 1.657-.168 2.485l-.765.289c-1.699-5.002-3.399-9.951-5.062-14.913-2.75-8.209-5.467-16.431-8.213-24.642a4498.887 4498.887 0 00-6.7-19.867c-.105-.31-.407-.552-.617-.826l4.896-9.002c.168.292.39.565.496.879a6167.476 6167.476 0 016.768 20.118c2.916 8.73 5.814 17.467 8.728 26.198.116.349.308.671.491 1.062l.67-.78-.167 10.052z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#4AA73C"
+                    d="M43.155 32.227c.21.274.511.516.617.826a4498.887 4498.887 0 016.7 19.867c2.746 8.211 5.463 16.433 8.213 24.642 1.662 4.961 3.362 9.911 5.062 14.913l.765-.289-.171 2.426-.155.559c-.266 2.656-.49 5.318-.814 7.968-.163 1.328-.509 2.632-.772 3.947-.198-.287-.476-.548-.583-.866-5.467-16.297-10.918-32.6-16.376-48.9a3888.972 3888.972 0 00-5.242-15.551c-.089-.263-.34-.469-.516-.702l3.272-8.84z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#57AE47"
+                    d="M65.202 70.702l-.67.78c-.183-.391-.375-.714-.491-1.062-2.913-8.731-5.812-17.468-8.728-26.198a6167.476 6167.476 0 00-6.768-20.118c-.105-.314-.327-.588-.496-.879l6.055-7.965c.191.255.463.482.562.769 1.681 4.921 3.347 9.848 5.003 14.778 1.547 4.604 3.071 9.215 4.636 13.813.105.308.47.526.714.786l.012 1.045c.058 8.082.115 16.167.171 24.251z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#60B24F"
+                    d="M65.021 45.404c-.244-.26-.609-.478-.714-.786-1.565-4.598-3.089-9.209-4.636-13.813-1.656-4.93-3.322-9.856-5.003-14.778-.099-.287-.371-.514-.562-.769 1.969-1.928 3.877-3.925 5.925-5.764 1.821-1.634 3.285-3.386 3.352-5.968.003-.107.059-.214.145-.514l.519 1.306c-.013.661-.072 1.322-.029 1.979.075 1.143.259 2.28.311 3.423.096 2.127.142 4.258.185 6.388.069 3.428.132 6.856.175 10.285.067 5.478.111 10.956.18 16.434.008.861.098 1.718.152 2.577z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#A9AA88"
+                    d="M62.598 107.085c.263-1.315.609-2.62.772-3.947.325-2.649.548-5.312.814-7.968l.066-.01.066.011a41.402 41.402 0 001.394 9.838c-.176.232-.425.439-.518.701-.727 2.05-1.412 4.116-2.143 6.166-.1.28-.378.498-.574.744l-.747-2.566.87-2.969z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#B6B598"
+                    d="M62.476 112.621c.196-.246.475-.464.574-.744.731-2.05 1.417-4.115 2.143-6.166.093-.262.341-.469.518-.701l1.255 2.754c-.248.352-.59.669-.728 1.061l-2.404 7.059c-.099.283-.437.483-.663.722l-.695-3.985z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#C2C1A7"
+                    d="M63.171 116.605c.227-.238.564-.439.663-.722l2.404-7.059c.137-.391.48-.709.728-1.061l1.215 1.037c-.587.58-.913 1.25-.717 2.097l-.369 1.208c-.168.207-.411.387-.494.624-.839 2.403-1.64 4.819-2.485 7.222-.107.305-.404.544-.614.812-.109-1.387-.22-2.771-.331-4.158z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#CECDB7"
+                    d="M63.503 120.763c.209-.269.506-.508.614-.812.845-2.402 1.646-4.818 2.485-7.222.083-.236.325-.417.494-.624l-.509 5.545c-.136.157-.333.294-.398.477-.575 1.614-1.117 3.24-1.694 4.854-.119.333-.347.627-.525.938-.158-.207-.441-.407-.454-.623-.051-.841-.016-1.688-.013-2.533z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#DBDAC7"
+                    d="M63.969 123.919c.178-.312.406-.606.525-.938.578-1.613 1.119-3.239 1.694-4.854.065-.183.263-.319.398-.477l.012 3.64-1.218 3.124-1.411-.495z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#EBE9DC"
+                    d="M65.38 124.415l1.218-3.124.251 3.696-1.469-.572z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#CECDB7"
+                    d="M67.464 110.898c-.196-.847.129-1.518.717-2.097l.337.23-1.054 1.867z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#4FAA41"
+                    d="M64.316 95.172l-.066-.011-.066.01.155-.559-.023.56z" />
+                </svg>
+              </span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category: Tools & AI Platforms -->
+        <div class="stack-category-block">
+          <div>
+            <h3 class="stack-category-name">TOOLS &amp; AI</h3>
+          </div>
+          <div class="stack-badges-wrap">
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" fill="url(#gemini-grad)" />
+                  <defs>
+                    <linearGradient id="gemini-grad" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#4E7FFF" />
+                      <stop offset="0.5" stop-color="#9B72CB" />
+                      <stop offset="1" stop-color="#D96570" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </span>
+              <span>Gemini Flash &amp; LLMs</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#A855F7" stroke-width="2">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                  </path>
+                </svg>
+              </span>
+              <span>Cline SDK (Agentic)</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill="#F34F29"
+                    d="M124.737 58.378L69.621 3.264c-3.172-3.174-8.32-3.174-11.497 0L46.68 14.71l14.518 14.518c3.375-1.139 7.243-.375 9.932 2.314 2.703 2.706 3.461 6.607 2.294 9.993l13.992 13.993c3.385-1.167 7.292-.413 9.994 2.295 3.78 3.777 3.78 9.9 0 13.679a9.673 9.673 0 01-13.683 0 9.677 9.677 0 01-2.105-10.521L68.574 47.933l-.002 34.341a9.708 9.708 0 012.559 1.828c3.778 3.777 3.778 9.898 0 13.683-3.779 3.777-9.904 3.777-13.679 0-3.778-3.784-3.778-9.905 0-13.683a9.65 9.65 0 013.167-2.11V47.333a9.581 9.581 0 01-3.167-2.111c-2.862-2.86-3.551-7.06-2.083-10.576L41.056 20.333 3.264 58.123a8.133 8.133 0 000 11.5l55.117 55.114c3.174 3.174 8.32 3.174 11.499 0l54.858-54.858a8.135 8.135 0 00-.001-11.501z" />
+                </svg>
+              </span>
+              <span>Git</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <g fill="#ffffff">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M64 5.103c-33.347 0-60.388 27.035-60.388 60.388 0 26.682 17.303 49.317 41.297 57.303 3.017.56 4.125-1.31 4.125-2.905 0-1.44-.056-6.197-.082-11.243-16.8 3.653-20.345-7.125-20.345-7.125-2.747-6.98-6.705-8.836-6.705-8.836-5.48-3.748.413-3.67.413-3.67 6.063.425 9.257 6.223 9.257 6.223 5.386 9.23 14.127 6.562 17.573 5.02.542-3.903 2.107-6.568 3.834-8.076-13.413-1.525-27.514-6.704-27.514-29.843 0-6.593 2.36-11.98 6.223-16.21-.628-1.52-2.695-7.662.584-15.98 0 0 5.07-1.623 16.61 6.19C53.7 35 58.867 34.327 64 34.304c5.13.023 10.3.694 15.127 2.033 11.526-7.813 16.59-6.19 16.59-6.19 3.287 8.317 1.22 14.46.593 15.98 3.872 4.23 6.215 9.617 6.215 16.21 0 23.194-14.127 28.3-27.574 29.796 2.167 1.874 4.097 5.55 4.097 11.183 0 8.08-.07 14.583-.07 16.572 0 1.607 1.088 3.49 4.148 2.897 23.98-7.994 41.263-30.622 41.263-57.294C124.388 32.14 97.35 5.104 64 5.104z" />
+                    <path
+                      d="M26.484 91.806c-.133.3-.605.39-1.035.185-.44-.196-.685-.605-.543-.906.13-.31.603-.395 1.04-.188.44.197.69.61.537.91zm2.446 2.729c-.287.267-.85.143-1.232-.28-.396-.42-.47-.983-.177-1.254.298-.266.844-.14 1.24.28.394.426.472.984.17 1.255zM31.312 98.012c-.37.258-.976.017-1.35-.52-.37-.538-.37-1.183.01-1.44.373-.258.97-.025 1.35.507.368.545.368 1.19-.01 1.452zm3.261 3.361c-.33.365-1.036.267-1.552-.23-.527-.487-.674-1.18-.343-1.544.336-.366 1.045-.264 1.564.23.527.486.686 1.18.333 1.543zm4.5 1.951c-.147.473-.825.688-1.51.486-.683-.207-1.13-.76-.99-1.238.14-.477.823-.7 1.512-.485.683.206 1.13.756.988 1.237zm4.943.361c.017.498-.563.91-1.28.92-.723.017-1.308-.387-1.315-.877 0-.503.568-.91 1.29-.924.717-.013 1.306.387 1.306.88zm4.598-.782c.086.485-.413.984-1.126 1.117-.7.13-1.35-.172-1.44-.653-.086-.498.422-.997 1.122-1.126.714-.123 1.354.17 1.444.663zm0 0" />
+                  </g>
+                </svg>
+              </span>
+              <span>GitHub</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#3A4D54"
+                    d="M73.8 50.8h11.3v11.5h5.7c2.6 0 5.3-.5 7.8-1.3 1.2-.4 2.6-1 3.8-1.7-1.6-2.1-2.4-4.7-2.6-7.3-.3-3.5.4-8.1 2.8-10.8l1.2-1.4 1.4 1.1c3.6 2.9 6.5 6.8 7.1 11.4 4.3-1.3 9.3-1 13.1 1.2l1.5.9-.8 1.6c-3.2 6.2-9.9 8.2-16.4 7.8-9.8 24.3-31 35.8-56.8 35.8-13.3 0-25.5-5-32.5-16.8l-.1-.2-1-2.1c-2.4-5.2-3.1-10.9-2.6-16.6l.2-1.7h9.6V50.8h11.3V39.6h22.5V28.3h13.5v22.5z" />
+                  <path fill="#00AADA"
+                    d="M110.4 55.1c.8-5.9-3.6-10.5-6.4-12.7-3.1 3.6-3.6 13.2 1.3 17.2-2.8 2.4-8.5 4.7-14.5 4.7H18.6c-.6 6.2.5 11.9 3 16.8l.8 1.5c.5.9 1.1 1.7 1.7 2.6 3 .2 5.7.3 8.2.2 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5 1.1-8.3 1.3h-.6c-1.3.1-2.7.1-4.2.1-1.6 0-3.1 0-4.9-.1 6 6.8 15.4 10.8 27.2 10.8 25 0 46.2-11.1 55.5-35.9 6.7.7 13.1-1 16-6.7-4.5-2.7-10.5-1.8-13.9-.1z" />
+                  <path fill="#28B8EB"
+                    d="M110.4 55.1c.8-5.9-3.6-10.5-6.4-12.7-3.1 3.6-3.6 13.2 1.3 17.2-2.8 2.4-8.5 4.7-14.5 4.7h-68c-.3 9.5 3.2 16.7 9.5 21 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.5 1.4l-.1-.1c8.5 4.4 20.8 4.3 35-1.1 15.8-6.1 30.6-17.7 40.9-30.9-.2.1-.4.1-.5.2z" />
+                  <path fill="#028BB8"
+                    d="M18.7 71.8c.4 3.3 1.4 6.4 2.9 9.3l.8 1.5c.5.9 1.1 1.7 1.7 2.6 3 .2 5.7.3 8.2.2 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.5 1.4h-.4c-1.3.1-2.7.1-4.1.1-1.6 0-3.2 0-4.9-.1 6 6.8 15.5 10.8 27.3 10.8 21.4 0 40-8.1 50.8-26H18.7v-.1z" />
+                  <path fill="#019BC6"
+                    d="M23.5 71.8c1.3 5.8 4.3 10.4 8.8 13.5 4.9-.1 8.9-.7 12-1.7.5-.2.9.1 1.1.5.2.5-.1.9-.5 1.1-.4.1-.8.3-1.3.4-2.4.7-5.2 1.2-8.6 1.4 8.5 4.4 20.8 4.3 34.9-1.1 8.5-3.3 16.8-8.2 24.2-14.1H23.5z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3"
+                    d="M28.4 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm3-12h9.8v9.8h-9.8v-9.8zm.9.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#23C2EE"
+                    d="M39.6 52.7h9.8v9.8h-9.8v-9.8zm.9.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3"
+                    d="M50.9 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#23C2EE"
+                    d="M50.9 41.5h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm3.1 10.4H72v9.8h-9.8v-9.8zm.8.8h.8v8.1H63v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3"
+                    d="M62.2 41.5H72v9.8h-9.8v-9.8zm.8.8h.8v8.1H63v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#23C2EE"
+                    d="M62.2 30.2H72V40h-9.8v-9.8zm.8.8h.8v8.1H63V31zm1.5 0h.8v8.1h-.8V31zm1.4 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31zm1.5 0h.8v8.1h-.8V31z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#00ACD3"
+                    d="M73.5 52.7h9.8v9.8h-9.8v-9.8zm.8.8h.8v8.1h-.8v-8.1zm1.4 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1zm1.5 0h.8v8.1h-.8v-8.1z" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#D4EEF1"
+                    d="M48.8 78.3c1.5 0 2.7 1.2 2.7 2.7 0 1.5-1.2 2.7-2.7 2.7-1.5 0-2.7-1.2-2.7-2.7 0-1.5 1.2-2.7 2.7-2.7" />
+                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#3A4D54"
+                    d="M48.8 79.1c.2 0 .5 0 .7.1-.2.1-.4.4-.4.7 0 .4.4.8.8.8.3 0 .6-.2.7-.4.1.2.1.5.1.7 0 1.1-.9 1.9-1.9 1.9-1.1 0-1.9-.9-1.9-1.9 0-1 .8-1.9 1.9-1.9M1.1 72.8h125.4c-2.7-.7-8.6-1.6-7.7-5.2-5 5.7-16.9 4-20 1.2-3.4 4.9-23 3-24.3-.8-4.2 5-17.3 5-21.5 0-1.4 3.8-21 5.7-24.3.8-3 2.8-15 4.5-20-1.2 1.1 3.5-4.9 4.5-7.6 5.2" />
+                  <path fill="#BFDBE0"
+                    d="M56 97.8c-6.7-3.2-10.3-7.5-12.4-12.2-2.5.7-5.5 1.2-8.9 1.4-1.3.1-2.7.1-4.1.1-1.7 0-3.4 0-5.2-.1 6 6 13.6 10.7 27.5 10.8H56z" />
+                  <path fill="#D4EEF1"
+                    d="M46.1 89.9c-.9-1.3-1.8-2.8-2.5-4.3-2.5.7-5.5 1.2-8.9 1.4 2.3 1.2 5.7 2.4 11.4 2.9z" />
+                </svg>
+              </span>
+              <span>Docker</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#ffffff"
+                    d="M36.379 53.64c0 1.56.168 2.825.465 3.75.336.926.758 1.938 1.347 3.032.207.336.293.672.293.969 0 .418-.254.84-.8 1.261l-2.653 1.77c-.379.25-.758.379-1.093.379-.422 0-.844-.211-1.266-.59a13.28 13.28 0 0 1-1.516-1.98 34.153 34.153 0 0 1-1.304-2.485c-3.282 3.875-7.41 5.813-12.38 5.813-3.535 0-6.355-1.012-8.421-3.032-2.063-2.023-3.114-4.718-3.114-8.086 0-3.578 1.262-6.484 3.833-8.671 2.566-2.192 5.976-3.286 10.316-3.286 1.43 0 2.902.125 4.46.336 1.56.211 3.161.547 4.845.926v-3.074c0-3.2-.676-5.43-1.98-6.734C26.061 32.633 23.788 32 20.546 32c-1.473 0-2.988.168-4.547.547a33.416 33.416 0 0 0-4.547 1.433c-.676.293-1.18.461-1.473.547-.296.082-.507.125-.675.125-.59 0-.883-.422-.883-1.304v-2.063c0-.676.082-1.18.293-1.476.21-.293.59-.586 1.18-.883 1.472-.758 3.242-1.39 5.304-1.895 2.063-.547 4.254-.8 6.57-.8 5.008 0 8.672 1.136 11.032 3.41 2.316 2.273 3.492 5.726 3.492 10.359v13.64Zm-17.094 6.403c1.387 0 2.82-.254 4.336-.758 1.516-.508 2.863-1.433 4-2.695.672-.8 1.18-1.684 1.43-2.695.254-1.012.422-2.23.422-3.665v-1.765a34.401 34.401 0 0 0-3.871-.719 31.816 31.816 0 0 0-3.961-.25c-2.82 0-4.883.547-6.274 1.684-1.387 1.136-2.062 2.734-2.062 4.84 0 1.98.504 3.453 1.558 4.464 1.012 1.051 2.485 1.559 4.422 1.559Zm33.809 4.547c-.758 0-1.262-.125-1.598-.422-.34-.254-.633-.84-.887-1.64L40.715 29.98c-.25-.843-.38-1.39-.38-1.687 0-.672.337-1.05 1.013-1.05h4.125c.8 0 1.347.124 1.644.421.336.25.59.84.84 1.64l7.074 27.876 6.57-27.875c.208-.84.462-1.39.797-1.64.34-.255.93-.423 1.688-.423h3.367c.8 0 1.348.125 1.684.422.336.25.633.84.8 1.64l6.653 28.212 7.285-28.211c.25-.84.547-1.39.84-1.64.336-.255.887-.423 1.644-.423h3.914c.676 0 1.055.336 1.055 1.051 0 .21-.043.422-.086.676-.043.254-.125.59-.293 1.05L80.801 62.57c-.254.84-.547 1.387-.887 1.64-.336.255-.883.423-1.598.423h-3.62c-.801 0-1.348-.13-1.684-.422-.34-.297-.633-.844-.801-1.684l-6.527-27.16-6.485 27.117c-.21.844-.46 1.391-.8 1.684-.337.297-.926.422-1.684.422Zm54.105 1.137c-2.187 0-4.379-.254-6.484-.758-2.106-.504-3.746-1.055-4.84-1.684-.676-.379-1.137-.8-1.305-1.18a2.919 2.919 0 0 1-.254-1.18v-2.148c0-.882.336-1.304.97-1.304.25 0 .503.043.757.129.25.082.629.25 1.05.418a23.102 23.102 0 0 0 4.634 1.476c1.683.336 3.324.504 5.011.504 2.653 0 4.715-.465 6.145-1.39 1.433-.926 2.191-2.274 2.191-4 0-1.18-.379-2.145-1.136-2.946-.758-.8-2.192-1.516-4.254-2.191l-6.106-1.895c-3.074-.969-5.348-2.398-6.734-4.293-1.39-1.855-2.106-3.918-2.106-6.105 0-1.77.38-3.328 1.137-4.676a10.829 10.829 0 0 1 3.031-3.453c1.262-.965 2.696-1.684 4.38-2.188 1.683-.504 3.452-.715 5.304-.715.926 0 1.894.043 2.82.168.969.125 1.852.293 2.738.461.84.211 1.641.422 2.399.676.758.254 1.348.504 1.77.758.59.336 1.011.672 1.261 1.05.254.34.379.802.379 1.391v1.98c0 .884-.336 1.348-.969 1.348-.336 0-.883-.171-1.597-.507-2.403-1.094-5.098-1.641-8.086-1.641-2.399 0-4.293.379-5.598 1.18-1.309.797-1.98 2.02-1.98 3.746 0 1.18.421 2.191 1.261 2.988.844.8 2.403 1.602 4.633 2.316l5.98 1.895c3.032.969 5.22 2.316 6.524 4.043 1.305 1.727 1.938 3.707 1.938 5.895 0 1.812-.38 3.453-1.094 4.882-.758 1.434-1.77 2.696-3.074 3.707-1.305 1.051-2.864 1.809-4.672 2.36-1.895.586-3.875.883-6.024.883Zm0 0" />
+                  <path fill="#f90"
+                    d="M118 73.348c-4.432.063-9.664 1.052-13.621 3.832-1.223.883-1.012 2.062.336 1.894 4.508-.547 14.44-1.726 16.21.547 1.77 2.23-1.976 11.62-3.663 15.79-.504 1.26.59 1.769 1.726.8 7.41-6.231 9.348-19.242 7.832-21.137-.757-.925-4.388-1.79-8.82-1.726zM1.63 75.859c-.927.116-1.347 1.236-.368 2.121 16.508 14.902 38.359 23.872 62.613 23.872 17.305 0 37.43-5.43 51.281-15.66 2.273-1.688.297-4.254-2.02-3.204-15.534 6.57-32.421 9.77-47.788 9.77-22.778 0-44.8-6.273-62.653-16.633-.39-.231-.755-.304-1.064-.266z" />
+                </svg>
+              </span>
+              <span>AWS Cloud</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+                  <path style="fill-rule:nonzero;fill:#ffffff;fill-opacity:1" d="M63.984 17.184 127.964 128H0Zm0 0" />
+                </svg>
+              </span>
+              <span>Vercel</span>
+            </div>
+            <div class="stack-badge">
+              <span class="stack-icon">
+                <svg viewBox="0 0 24 24" fill="#6C47FF">
+                  <rect width="24" height="24" rx="6" fill="#6C47FF" />
+                  <path
+                    d="M12 6a4 4 0 0 0-4 4v1H7a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-6a1 1 0 0 0-1-1h-1v-1a4 4 0 0 0-4-4zm-2 4a2 2 0 1 1 4 0v1h-4v-1z"
+                    fill="#FFFFFF" />
+                </svg>
+              </span>
+              <span>Clerk Auth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         MY EXPERIENCE SECTION
+         ======================================================================== -->
+    <section class="section-py" id="my-experience">
+      <div class="container">
+        <!-- Spinning flower section header -->
+        <div class="section-header-tag">
+          <svg class="rotating-star" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"></path>
+          </svg>
+          <span class="section-tag-text">WORK EXPERIENCE</span>
+        </div>
+
+        <div class="experience-list">
+          <!-- Role 1: Elite-AI -->
+          <div class="experience-card">
+            <div class="exp-company">
+              <span>Elite-AI</span>
+              <span class="exp-period">2025 — Present</span>
+            </div>
+            <h3 class="exp-role">Full-Stack Developer</h3>
+            <p class="exp-details">
+              Spearheading full-stack web application development, implementing AI-driven workflows, creating resilient
+              backend architectures, and designing responsive, high-performance interfaces tailored for enterprise scale
+              and speed.
+            </p>
+          </div>
+
+          <!-- Role 2: IT Bridge -->
+          <div class="experience-card">
+            <div class="exp-company">
+              <span>IT Bridge</span>
+              <span class="exp-period">2024 — 2025</span>
+            </div>
+            <h3 class="exp-role">Front-End Developer Intern</h3>
+            <p class="exp-details">
+              Engineered responsive UI modules using React, JavaScript, and Tailwind CSS. Collaborated closely on API
+              integrations, state management, cross-browser compatibility, and rigorous UI/UX optimization for
+              production-grade web solutions.
+            </p>
+          </div>
+
+          <!-- Role 3: Andhra Pradesh Government Initiatives -->
+          <div class="experience-card">
+            <div class="exp-company">
+              <span>Andhra Pradesh Government Tech Initiatives</span>
+              <span class="exp-period">GovTech Projects</span>
+            </div>
+            <h3 class="exp-role">Front-End Developer &amp; QA Specialist</h3>
+            <p class="exp-details">
+              Delivered front-end components and QA validation for state-wide platforms including <strong>Central Drone
+                Monitoring Portal (CDMP)</strong>, <strong>SafeStay</strong>, and <strong>Dharma Application</strong> —
+              ensuring peak reliability, security workflows, and real-time responsiveness.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SELECTED PROJECTS SECTION
+         ======================================================================== -->
+    <section class="section-py" id="selected-projects"
+      style="background: rgba(16, 18, 23, 0.6); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+      <div class="container">
+        <!-- Spinning flower section header -->
+        <div class="section-header-tag">
+          <svg class="rotating-star" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"></path>
+          </svg>
+          <span class="section-tag-text">SELECTED PROJECTS</span>
+        </div>
+
+        <div class="projects-container">
+          <!-- Project 01: Central Drone Monitoring Portal (CDMP) -->
+          <article class="project-row" data-project-id="cdmp" tabindex="0" role="button"
+            aria-label="View Central Drone Monitoring Portal (CDMP) Case Study">
+            <div class="project-header-flex">
+              <span class="project-idx">_01.</span>
+              <div class="project-content-main">
+                <h3 class="project-title-link">
+                  Central Drone Monitoring Portal (CDMP)
+                  <svg class="project-arrow-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M7 7h10v10"></path>
+                  </svg>
+                </h3>
+                <p class="project-subtitle">Central Drone Monitoring Portal — Andhra Pradesh Government (2026)</p>
+                <div class="project-tech-tags">
+                  <span class="project-tag highlight">React.js</span>
+                  <span class="project-tag highlight">Vite</span>
+                  <span class="project-tag highlight">HLS.js Live Feeds</span>
+                  <span class="project-tag">Tailwind CSS</span>
+                  <span class="project-tag">React Router</span>
+                  <span class="project-tag">REST APIs</span>
+                  <span class="project-tag">Fleet Telemetry</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02: SafeStay -->
+          <article class="project-row" data-project-id="safestay" tabindex="0" role="button"
+            aria-label="View SafeStay Case Study">
+            <div class="project-header-flex">
+              <span class="project-idx">_02.</span>
+              <div class="project-content-main">
+                <h3 class="project-title-link">
+                  SafeStay
+                  <svg class="project-arrow-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M7 7h10v10"></path>
+                  </svg>
+                </h3>
+                <p class="project-subtitle">Accommodation &amp; Safety Platform — Andhra Pradesh Government (2026)</p>
+                <div class="project-tech-tags">
+                  <span class="project-tag highlight">React.js</span>
+                  <span class="project-tag highlight">QR Stay Passes</span>
+                  <span class="project-tag highlight">OTP Authentication</span>
+                  <span class="project-tag">Framer Motion</span>
+                  <span class="project-tag">Axios &amp; REST APIs</span>
+                  <span class="project-tag">SOS Workflows</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03: Dharma Application -->
+          <article class="project-row" data-project-id="dharma" tabindex="0" role="button"
+            aria-label="View Dharma Application Case Study">
+            <div class="project-header-flex">
+              <span class="project-idx">_03.</span>
+              <div class="project-content-main">
+                <h3 class="project-title-link">
+                  Dharma Application
+                  <svg class="project-arrow-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M7 7h10v10"></path>
+                  </svg>
+                </h3>
+                <p class="project-subtitle">Administrative &amp; Public Digital Services — Andhra Pradesh Government
+                  (2026)</p>
+                <div class="project-tech-tags">
+                  <span class="project-tag highlight">React.js</span>
+                  <span class="project-tag highlight">Component Architecture</span>
+                  <span class="project-tag">Vite</span>
+                  <span class="project-tag">Tailwind CSS</span>
+                  <span class="project-tag">REST APIs</span>
+                  <span class="project-tag">Digital Workflows</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 04: Forge (AI Agentic App Builder) -->
+          <article class="project-row" data-project-id="forge" tabindex="0" role="button"
+            aria-label="View Forge Case Study">
+            <div class="project-header-flex">
+              <span class="project-idx">_04.</span>
+              <div class="project-content-main">
+                <h3 class="project-title-link">
+                  Forge
+                  <svg class="project-arrow-icon" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M7 17 17 7"></path>
+                    <path d="M7 7h10v10"></path>
+                  </svg>
+                </h3>
+                <p class="project-subtitle">Full-Stack Agentic AI App Builder &amp; Live Sandbox Platform (2026)</p>
+                <div class="project-tech-tags">
+                  <span class="project-tag highlight">Next.js 15</span>
+                  <span class="project-tag highlight">TypeScript</span>
+                  <span class="project-tag highlight">Gemini Flash</span>
+                  <span class="project-tag highlight">Cline SDK</span>
+                  <span class="project-tag">Sandpack</span>
+                  <span class="project-tag">Clerk Auth</span>
+                  <span class="project-tag">Supabase</span>
+                  <span class="project-tag">PostgreSQL &amp; Prisma</span>
+                  <span class="project-tag">Arcjet</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PROJECT CASE STUDY FULLSCREEN TAKEOVER VIEW / PAGE MODAL
+         ======================================================================== -->
+    <div class="project-modal-view" id="projectModalView" aria-hidden="true" role="dialog" aria-modal="true">
+      <!-- Sticky Navigation Header -->
+      <div class="project-detail-sticky-bar">
+        <div class="project-breadcrumb">
+          <a id="projectModalBackBreadcrumb" href="#selected-projects" title="Back to Selected Projects">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+            <span>Projects</span>
+          </a>
+          <span class="crumb-sep">/</span>
+          <span class="current-title" id="projectModalBreadcrumbTitle">Project Details</span>
+        </div>
+
+        <button class="project-close-btn" id="projectModalCloseBtn" aria-label="Close Case Study">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+          <span class="close-btn-text">Back to Projects</span>
+          <span class="esc-badge">ESC</span>
+        </button>
+      </div>
+
+      <!-- Project Dynamic Content Container -->
+      <div class="container" id="projectModalDynamicContent" style="padding-bottom: 3rem;">
+        <!-- Injected dynamically via JS router for seamless navigation -->
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         EDUCATION & VISION / WHAT I WANT SECTION
+         ======================================================================== -->
+    <section class="section-py" id="education-goals">
+      <div class="container">
+        <!-- Spinning flower section header -->
+        <div class="section-header-tag">
+          <svg class="rotating-star" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"></path>
+          </svg>
+          <span class="section-tag-text">EDUCATION &amp; ASPIRATION</span>
+        </div>
+
+        <div class="edu-grid">
+          <!-- Degree 1: Engineering -->
+          <div class="edu-card">
+            <div>
+              <span class="edu-year-badge">2020 — 2024</span>
+              <h3 class="edu-degree" style="margin-top: 1rem;">B.E. in Computer Science &amp; Engineering</h3>
+              <p class="edu-institution">Proudhadevarya Institute of Technology, Hospet</p>
+            </div>
+          </div>
+
+          <!-- What I Want / Ambition Card -->
+          <div class="ambition-card">
+            <p class="ambition-title">WHAT I’M LOOKING FOR</p>
+            <p class="ambition-text">
+              "I want to build products that <strong>solve real problems</strong>, work with great engineering teams,
+              and keep pushing my skills beyond the familiar. I’m actively seeking opportunities in <strong>Frontend,
+                Full-Stack, and AI-powered application development</strong> where I can learn, contribute, and create
+              technology that people actually use."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT / FOOTER SECTION
+         ======================================================================== -->
+    <footer class="footer-section" id="contact">
+      <div class="container">
+        <p class="contact-sub">Have an opportunity or project in mind?</p>
+
+        <a href="mailto:arafathyaser032@gmail.com" class="contact-email-big" id="emailLink">
+          arafathyaser032@gmail.com
+        </a>
+
+        <div class="social-links-row">
+          <a href="https://www.linkedin.com/in/yaser-arfath-a90008280/?isSelfProfile=true" target="_blank"
+            rel="noopener noreferrer" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <a href="https://github.com/YaserArfath320" target="_blank" rel="noopener noreferrer" class="social-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+              </path>
+              <path d="M9 18c-4.51 2-5-2-7-2"></path>
+            </svg>
+            <span>GitHub</span>
+          </a>
+
+          <button class="social-btn" id="copyEmailBtn" style="cursor: pointer;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+            </svg>
+            <span>Copy Email</span>
+          </button>
+        </div>
+
+        <div class="footer-bottom-credit">
+          <p>Designed &amp; Built by Yaser Arfath • Full-Stack Developer</p>
+          <p style="color: var(--text-submuted); font-size: 0.8rem;">Bengaluru, India</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT: INTERACTIONS, DRAWER, SCROLL & CURSOR
+       ========================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Preloader dismissal animation
+      const preloader = document.getElementById('preloader');
+      const preloaderText = document.getElementById('preloaderText');
+
+      setTimeout(() => {
+        if (preloaderText) preloaderText.style.opacity = '0';
+      }, 700);
+
+      setTimeout(() => {
+        if (preloader) preloader.classList.add('finished');
+      }, 1200);
+
+      // 2. Navigation Drawer Toggle
+      const menuToggleBtn = document.getElementById('menuToggleBtn');
+      const navDrawer = document.getElementById('navDrawer');
+      const drawerBackdrop = document.getElementById('drawerBackdrop');
+      const drawerNavItems = document.querySelectorAll('.drawer-nav-item');
+
+      function toggleMenu() {
+        const isOpen = navDrawer.classList.contains('open');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      }
+
+      function openMenu() {
+        menuToggleBtn.classList.add('active');
+        navDrawer.classList.add('open');
+        drawerBackdrop.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        menuToggleBtn.classList.remove('active');
+        navDrawer.classList.remove('open');
+        drawerBackdrop.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (menuToggleBtn) menuToggleBtn.addEventListener('click', toggleMenu);
+      if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMenu);
+
+      drawerNavItems.forEach(item => {
+        item.addEventListener('click', () => {
+          closeMenu();
+        });
+      });
+
+      // 3. Scroll Progress Indicator (Vertical Floating Pill)
+      const progressBar = document.getElementById('progressBar');
+
+      function updateScrollProgress() {
+        const winScroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = totalHeight > 0 ? (winScroll / totalHeight) * 100 : 0;
+
+        if (progressBar) {
+          if (winScroll <= 15) {
+            progressBar.style.height = '0%';
+            progressBar.style.opacity = '0';
+          } else {
+            progressBar.style.height = Math.min(scrollPercent, 100) + '%';
+            progressBar.style.opacity = '1';
+          }
+        }
+      }
+
+      window.addEventListener('scroll', updateScrollProgress, { passive: true });
+      window.addEventListener('resize', updateScrollProgress);
+      window.addEventListener('touchmove', updateScrollProgress, { passive: true });
+      updateScrollProgress();
+
+      // 4. Custom Cursor Tracking & Ambient Spotlight (Desktop)
+      const cursor = document.getElementById('cursor');
+      const cursorSpotlight = document.getElementById('cursorSpotlight');
+
+      if (window.innerWidth >= 1024) {
+        document.addEventListener('mousemove', (e) => {
+          document.documentElement.style.setProperty('--mouse-x', e.clientX + 'px');
+          document.documentElement.style.setProperty('--mouse-y', e.clientY + 'px');
+
+          if (cursor) {
+            cursor.style.opacity = '1';
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+          }
+        });
+
+        document.addEventListener('mouseleave', () => {
+          if (cursor) cursor.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+          if (cursor) cursor.style.opacity = '1';
+        });
+
+        // Hover expansions for links and buttons
+        const interactiveElements = document.querySelectorAll('a, button, .project-row, .stack-badge, .experience-card');
+        interactiveElements.forEach(el => {
+          el.addEventListener('mouseenter', () => cursor && cursor.classList.add('hovering'));
+          el.addEventListener('mouseleave', () => cursor && cursor.classList.remove('hovering'));
+        });
+      }
+
+      // 4b. Ambient Luminous Particle Canvas Engine
+      const canvas = document.getElementById('bgCanvas');
+      if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const ctx = canvas.getContext('2d');
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 22 : 45;
+        const particles = [];
+        let mouse = { x: -1000, y: -1000 };
+
+        window.addEventListener('mousemove', (e) => {
+          mouse.x = e.clientX;
+          mouse.y = e.clientY;
+        }, { passive: true });
+
+        window.addEventListener('mouseleave', () => {
+          mouse.x = -1000;
+          mouse.y = -1000;
+        });
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        }, { passive: true });
+
+        // Particle Class
+        class StarParticle {
+          constructor() {
+            this.reset(true);
+          }
+
+          reset(initial = false) {
+            this.x = Math.random() * width;
+            this.y = initial ? Math.random() * height : (Math.random() < 0.5 ? 0 : height);
+            this.size = Math.random() * 1.8 + 0.8;
+            this.baseAlpha = Math.random() * 0.45 + 0.2;
+            this.alpha = this.baseAlpha;
+            this.twinkleSpeed = Math.random() * 0.015 + 0.005;
+            this.twinkleVal = Math.random() * Math.PI * 2;
+            this.vx = (Math.random() - 0.5) * 0.35;
+            this.vy = (Math.random() - 0.5) * 0.35;
+            this.color = Math.random() > 0.4 ? '245, 158, 11' : '59, 130, 246'; // Golden amber or cyan/blue
+          }
+
+          update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Twinkle brightness
+            this.twinkleVal += this.twinkleSpeed;
+            this.alpha = this.baseAlpha + Math.sin(this.twinkleVal) * 0.15;
+
+            // Gentle mouse evasion
+            const dx = this.x - mouse.x;
+            const dy = this.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+              const force = (100 - dist) / 100;
+              this.x += (dx / dist) * force * 1.5;
+              this.y += (dy / dist) * force * 1.5;
+            }
+
+            // Screen wrap
+            if (this.x < 0) this.x = width;
+            if (this.x > width) this.x = 0;
+            if (this.y < 0) this.y = height;
+            if (this.y > height) this.y = 0;
+          }
+
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color}, ${Math.max(0, this.alpha)})`;
+            ctx.shadowColor = `rgba(${this.color}, 0.8)`;
+            ctx.shadowBlur = this.size * 3;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new StarParticle());
+        }
+
+        let isVisible = true;
+        document.addEventListener('visibilitychange', () => {
+          isVisible = !document.hidden;
+        });
+
+        function animateParticles() {
+          if (isVisible) {
+            ctx.clearRect(0, 0, width, height);
+
+            // Connect nearby particles with subtle golden links
+            for (let i = 0; i < particles.length; i++) {
+              for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < 90) {
+                  const lineAlpha = (1 - dist / 90) * 0.12;
+                  ctx.beginPath();
+                  ctx.moveTo(particles[i].x, particles[i].y);
+                  ctx.lineTo(particles[j].x, particles[j].y);
+                  ctx.strokeStyle = `rgba(245, 158, 11, ${lineAlpha})`;
+                  ctx.lineWidth = 0.6;
+                  ctx.stroke();
+                }
+              }
+            }
+
+            // Update & render all particles
+            for (let i = 0; i < particles.length; i++) {
+              particles[i].update();
+              particles[i].draw();
+            }
+          }
+          requestAnimationFrame(animateParticles);
+        }
+
+        requestAnimationFrame(animateParticles);
+      }
+
+      // 5. Copy Email to Clipboard with Toast Notification
+      const copyEmailBtn = document.getElementById('copyEmailBtn');
+      const toastMsg = document.getElementById('toastMsg');
+      const emailText = 'arafathyaser032@gmail.com';
+
+      function showToast(message) {
+        if (!toastMsg) return;
+        toastMsg.textContent = message || 'Copied to clipboard!';
+        toastMsg.classList.add('show');
+        setTimeout(() => {
+          toastMsg.classList.remove('show');
+        }, 2500);
+      }
+
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(emailText).then(() => {
+            showToast('Email (arafathyaser032@gmail.com) copied!');
+          }).catch(() => {
+            showToast('arafathyaser032@gmail.com');
+          });
+        });
+      }
+
+      // Header scroll background opacity
+      const siteHeader = document.querySelector('.site-header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          siteHeader.style.background = 'rgba(12, 13, 16, 0.9)';
+          siteHeader.style.borderBottomColor = 'rgba(255, 255, 255, 0.08)';
+        } else {
+          siteHeader.style.background = 'rgba(12, 13, 16, 0.65)';
+          siteHeader.style.borderBottomColor = 'rgba(255, 255, 255, 0.04)';
+        }
+      });
+
+      // 6. Premium Scroll-Triggered Reveal Animation with Staggering
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        // Apply staggered delays to sibling elements within lists/grids (excluding above-the-fold hero)
+        const staggerContainers = [
+          '.experience-list .experience-card',
+          '.projects-container .project-row',
+          '.education-grid > div',
+          '.social-links-row .social-btn'
+        ];
+
+        staggerContainers.forEach((selector) => {
+          const items = document.querySelectorAll(selector);
+          items.forEach((item, idx) => {
+            const delayClass = `delay-${Math.min((idx % 5) + 1, 5)}`;
+            item.classList.add('fade-reveal', delayClass);
+          });
+        });
+
+        const revealElements = document.querySelectorAll(
+          '.section-header-tag, .about-lead-statement, .about-divider-bar, .about-content-grid > div, .stack-category-block, .experience-card, .project-row, .edu-card, .ambition-card, .contact-sub, .contact-email-big, .social-links-row, .fade-reveal, .fade-reveal-left, .fade-reveal-right'
+        );
+
+        revealElements.forEach((el) => {
+          if (!el.classList.contains('fade-reveal') && !el.classList.contains('fade-reveal-left') && !el.classList.contains('fade-reveal-right')) {
+            el.classList.add('fade-reveal');
+          }
+        });
+
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: '0px 0px 0px 0px',
+            threshold: 0.05
+          }
+        );
+
+        revealElements.forEach((el) => {
+          revealObserver.observe(el);
+        });
+      }
+
+      // 7. Interactive Fullscreen Project Detail View Router
+      const PROJECTS_DATA = {
+        cdmp: {
+          id: 'cdmp',
+          index: '01',
+          title: 'Central Drone Monitoring Portal (CDMP)',
+          year: '2026',
+          sector: 'Andhra Pradesh Government',
+          role: 'Front-End Developer',
+          techStack: [
+            'React.js', 'JavaScript', 'Vite', 'Tailwind CSS', 'React Router',
+            'CSS', 'HLS.js', 'REST/API Integration', 'Responsive Web Design', 'Git/GitHub'
+          ],
+          description: 'CDMP (Central Drone Monitoring Portal) is an Andhra Pradesh Government project designed to provide a centralized platform for monitoring and managing drone operations across the state. The portal brings together drone fleet management, live monitoring, missions, incidents, district coverage, reports, user management, and authentication into a single operational interface.',
+          keyFeatures: [
+            'Live drone monitoring',
+            'Drone fleet management',
+            'Multi-drone selection and monitoring',
+            'Mission management',
+            'Incident monitoring',
+            'District coverage',
+            'Reports module',
+            'User management',
+            'Authentication and role-based access',
+            'Responsive desktop, tablet, and mobile interfaces'
+          ],
+          technicalHighlights: [
+            'Component-based React architecture',
+            'Responsive layouts across multiple breakpoints',
+            'Live video streaming integration using HLS',
+            'Route-based application structure',
+            'Role-based UI and protected routes',
+            'Reusable UI components',
+            'Git-based collaborative development',
+            'UI optimization and cross-device testing'
+          ],
+          myRole: 'Front-End Developer — Built and refined React modules, responsive interfaces, live monitoring experiences, authentication flows, user management interfaces, reports, and multiple UI/UX improvements while maintaining the existing application architecture.',
+          prevId: 'forge',
+          prevName: 'Forge',
+          nextId: 'safestay',
+          nextName: 'SafeStay'
+        },
+        safestay: {
+          id: 'safestay',
+          index: '02',
+          title: 'SafeStay',
+          year: '2026',
+          sector: 'Andhra Pradesh Government',
+          role: 'Front-End Developer & QA',
+          techStack: [
+            'React.js', 'JavaScript', 'Vite', 'Tailwind CSS', 'Framer Motion',
+            'Axios', 'REST APIs', 'Responsive Web Design', 'QR Code Workflows', 'OTP Authentication'
+          ],
+          description: 'SafeStay is an Andhra Pradesh Government project focused on providing a safer and more structured accommodation experience for guests and property owners. The platform connects guests with verified properties and includes booking, identity verification, stay management, co-guest management, QR-based stay passes, KYC, alerts, and emergency SOS workflows.',
+          keyFeatures: [
+            'Guest authentication and registration',
+            'Mobile OTP verification',
+            'Property search and filtering',
+            'Property verification',
+            'Booking management',
+            'Co-guest management',
+            'QR-based stay pass',
+            'Identity/KYC verification',
+            'Aadhaar and PAN upload workflows',
+            'Liveness/selfie verification',
+            'Emergency SOS functionality',
+            'Guest profile and identity pass',
+            'Property-owner workflows'
+          ],
+          technicalHighlights: [
+            'Responsive guest and owner interfaces',
+            'OTP-based authentication flows',
+            'QR-based identity/stay-pass workflow',
+            'Multi-step KYC experience',
+            'API integration using Axios',
+            'Interactive UI and animations',
+            'Extensive functional and pre-launch QA',
+            'Cross-device and workflow testing'
+          ],
+          myRole: 'Front-End Developer & QA — Worked on user-facing interfaces, authentication, booking and stay-pass flows, KYC workflows, SOS interactions, profile experiences, and responsive UI. I also performed detailed pre-launch testing across guest and owner workflows and identified issues for resolution.',
+          prevId: 'cdmp',
+          prevName: 'Central Drone Monitoring Portal (CDMP)',
+          nextId: 'dharma',
+          nextName: 'Dharma Application'
+        },
+        dharma: {
+          id: 'dharma',
+          index: '03',
+          title: 'Dharma Application',
+          year: '2026',
+          sector: 'Andhra Pradesh Government',
+          role: 'Front-End Developer',
+          techStack: [
+            'React.js', 'JavaScript', 'Vite', 'Tailwind CSS', 'REST APIs',
+            'Responsive Web Design', 'Component-Based UI'
+          ],
+          description: 'Dharma is an Andhra Pradesh Government application built to support digital workflows and services through a modern web interface. The application focuses on providing users with a structured and accessible digital experience while translating functional requirements into responsive and intuitive interfaces.',
+          keyFeatures: [
+            'Responsive web interface',
+            'User workflows',
+            'Form-based interactions',
+            'API-driven functionality',
+            'Structured navigation',
+            'Interactive UI components',
+            'Mobile-friendly experience'
+          ],
+          technicalHighlights: [
+            'Component-based React development',
+            'Responsive UI implementation',
+            'API integration',
+            'Reusable interface components',
+            'Form and interaction handling',
+            'Cross-device UI testing'
+          ],
+          myRole: 'Front-End Developer — Worked on implementing responsive UI components, user workflows, API integrations, and interactive interfaces while ensuring consistency and usability across different screen sizes.',
+          note: "Note: For Dharma, I'd keep this description conservative until you give me the exact modules/features you worked on. That way your portfolio doesn't contain anything inaccurate.",
+          prevId: 'safestay',
+          prevName: 'SafeStay',
+          nextId: 'forge',
+          nextName: 'Forge'
+        },
+        forge: {
+          id: 'forge',
+          index: '04',
+          title: 'Forge',
+          year: '2026',
+          sector: 'Agentic AI Platform',
+          role: 'Full-Stack Developer',
+          techStack: [
+            'Next.js 15', 'TypeScript', 'React', 'Tailwind CSS', 'Shadcn UI',
+            'Gemini Flash', 'Cline SDK', 'Sandpack', 'Clerk', 'Supabase',
+            'PostgreSQL', 'Prisma', 'Arcjet'
+          ],
+          description: 'Forge is a full-stack agentic AI application builder that allows users to describe an application in plain English and generate complete React applications with an interactive live preview. Inspired by platforms such as Bolt and Lovable, Forge combines AI code generation, persistent project history, authentication, subscriptions, credit management, AI-powered improvements, runtime error detection, and project export into a single development platform.',
+          keyFeatures: [
+            'AI-powered React application generation',
+            'Natural-language app creation',
+            'Live Sandpack code preview',
+            'Persistent chat history',
+            'Image uploads',
+            'Clerk authentication',
+            'Google OAuth',
+            'Credit-based usage system',
+            'Subscription plans',
+            'AI-powered project improvements',
+            'Runtime error detection',
+            'Fix-with-AI functionality',
+            'Project management dashboard',
+            'ZIP project export',
+            'Dark mode',
+            'Responsive design'
+          ],
+          technicalHighlights: [
+            'Full-stack Next.js architecture',
+            'TypeScript-based development',
+            'Gemini-powered AI code generation',
+            'Cline SDK for agentic code improvements',
+            'Sandpack for real-time application previews',
+            'PostgreSQL database with Prisma ORM',
+            'Supabase Storage integration',
+            'Clerk authentication and billing',
+            'Arcjet rate limiting',
+            'Credit-based SaaS architecture',
+            'AI-assisted runtime error resolution'
+          ],
+          myRole: 'Full-Stack Developer — Designed and developed the application across the frontend and backend, integrating AI code generation, agentic workflows, authentication, billing, database architecture, live code previews, project management, and export functionality.',
+          prevId: 'dharma',
+          prevName: 'Dharma Application',
+          nextId: 'cdmp',
+          nextName: 'Central Drone Monitoring Portal (CDMP)'
+        }
+      };
+
+      const projectModalView = document.getElementById('projectModalView');
+      const projectModalDynamicContent = document.getElementById('projectModalDynamicContent');
+      const projectModalBreadcrumbTitle = document.getElementById('projectModalBreadcrumbTitle');
+      const projectModalCloseBtn = document.getElementById('projectModalCloseBtn');
+      const projectModalBackBreadcrumb = document.getElementById('projectModalBackBreadcrumb');
+
+      function renderProjectMarkup(project) {
+        const techPillsHtml = project.techStack.map(tech => `
+          <span class="tech-pill">
+            <span class="tech-pill-dot"></span>
+            <span>${tech}</span>
+          </span>
+        `).join('');
+
+        const featuresHtml = project.keyFeatures.map(feat => `
+          <div class="feature-card">
+            <span class="feature-icon-badge">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="feature-text">${feat}</span>
+          </div>
+        `).join('');
+
+        const highlightsHtml = project.technicalHighlights.map((hl, i) => `
+          <div class="highlight-card">
+            <span class="highlight-num">${(i + 1).toString().padStart(2, '0')}.</span>
+            <span class="highlight-text">${hl}</span>
+          </div>
+        `).join('');
+
+        const noteHtml = project.note ? `
+          <div class="project-note-box">
+            <p>${project.note}</p>
+          </div>
+        ` : '';
+
+        return `
+          <section class="project-detail-hero">
+            <div class="project-detail-num-tag">
+              <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--primary);"></span>
+              <span>_${project.index}. CASE STUDY</span>
+            </div>
+            <h1 class="project-detail-heading">${project.title}</h1>
+
+            <div class="project-meta-grid">
+              <div class="project-meta-item">
+                <span class="project-meta-label">Project Year</span>
+                <span class="project-meta-value accent">${project.year}</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Client / Domain</span>
+                <span class="project-meta-value">${project.sector}</span>
+              </div>
+              <div class="project-meta-item">
+                <span class="project-meta-label">Role</span>
+                <span class="project-meta-value accent">${project.role}</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tech & Technique -->
+          <section class="project-section-block">
+            <p class="project-section-label">01 // TOOLS &amp; ARCHITECTURE</p>
+            <h2 class="project-section-title">Tech &amp; Technique</h2>
+            <div class="tech-pill-list">
+              ${techPillsHtml}
+            </div>
+          </section>
+
+          <!-- Overview & Description -->
+          <section class="project-section-block">
+            <p class="project-section-label">02 // OVERVIEW</p>
+            <h2 class="project-section-title">Description</h2>
+            <div class="project-detail-desc">
+              <p>${project.description}</p>
+              ${noteHtml}
+            </div>
+          </section>
+
+          <!-- Key Features -->
+          <section class="project-section-block">
+            <p class="project-section-label">03 // CORE CAPABILITIES</p>
+            <h2 class="project-section-title">Key Features</h2>
+            <div class="features-grid">
+              ${featuresHtml}
+            </div>
+          </section>
+
+          <!-- Technical Highlights -->
+          <section class="project-section-block">
+            <p class="project-section-label">04 // ENGINEERING DEPTH</p>
+            <h2 class="project-section-title">Technical Highlights</h2>
+            <div class="highlights-grid">
+              ${highlightsHtml}
+            </div>
+          </section>
+
+          <!-- My Role -->
+          <section class="project-section-block">
+            <p class="project-section-label">05 // RESPONSIBILITY &amp; IMPACT</p>
+            <h2 class="project-section-title">My Role</h2>
+            <div class="role-callout-box">
+              <div class="role-header-line">
+                <span class="role-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                  ${project.role}
+                </span>
+              </div>
+              <p class="role-desc-text">${project.myRole}</p>
+            </div>
+          </section>
+
+          <!-- Bottom Prev / Next Project Navigation -->
+          <footer class="project-nav-footer">
+            <div class="project-nav-grid">
+              <button class="project-nav-btn prev" onclick="window.portfolioOpenProject('${project.prevId}')" aria-label="Previous Project: ${project.prevName}">
+                <span class="project-nav-dir">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"/>
+                  </svg>
+                  Previous Project
+                </span>
+                <span class="project-nav-name">${project.prevName}</span>
+              </button>
+
+              <button class="project-nav-btn next" onclick="window.portfolioOpenProject('${project.nextId}')" aria-label="Next Project: ${project.nextName}">
+                <span class="project-nav-dir">
+                  Next Project
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"/>
+                  </svg>
+                </span>
+                <span class="project-nav-name">${project.nextName}</span>
+              </button>
+            </div>
+          </footer>
+        `;
+      }
+
+      window.portfolioOpenProject = function (projectId, updateHash = true) {
+        const key = projectId.toLowerCase().replace('project-', '').replace('-project', '');
+        const project = PROJECTS_DATA[key];
+        if (!project) return;
+
+        if (projectModalDynamicContent) {
+          projectModalDynamicContent.innerHTML = renderProjectMarkup(project);
+        }
+        if (projectModalBreadcrumbTitle) {
+          projectModalBreadcrumbTitle.textContent = project.title;
+        }
+
+        if (projectModalView) {
+          projectModalView.classList.add('active');
+          projectModalView.setAttribute('aria-hidden', 'false');
+          projectModalView.scrollTop = 0;
+        }
+
+        document.body.style.overflow = 'hidden';
+
+        if (updateHash) {
+          history.pushState(null, '', '#project-' + key);
+        }
+      };
+
+      window.portfolioCloseProject = function (updateHash = true) {
+        if (!projectModalView) return;
+        projectModalView.classList.remove('active');
+        projectModalView.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        if (updateHash && window.location.hash.startsWith('#project-')) {
+          history.pushState(null, '', '#selected-projects');
+        }
+      };
+
+      // Click event listener for project cards in Selected Projects
+      const projectRows = document.querySelectorAll('.project-row');
+      projectRows.forEach(row => {
+        row.addEventListener('click', (e) => {
+          const projectId = row.getAttribute('data-project-id');
+          if (projectId) {
+            window.portfolioOpenProject(projectId, true);
+          }
+        });
+
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const projectId = row.getAttribute('data-project-id');
+            if (projectId) {
+              window.portfolioOpenProject(projectId, true);
+            }
+          }
+        });
+      });
+
+      if (projectModalCloseBtn) {
+        projectModalCloseBtn.addEventListener('click', () => {
+          window.portfolioCloseProject(true);
+        });
+      }
+
+      if (projectModalBackBreadcrumb) {
+        projectModalBackBreadcrumb.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.portfolioCloseProject(true);
+        });
+      }
+
+      // Handle keyboard Escape
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && projectModalView && projectModalView.classList.contains('active')) {
+          window.portfolioCloseProject(true);
+        }
+      });
+
+      // Handle URL Hash navigation & Deep linking
+      function handleHashChange() {
+        const hash = window.location.hash;
+        if (hash.startsWith('#project-')) {
+          const projectId = hash.replace('#project-', '');
+          if (PROJECTS_DATA[projectId]) {
+            window.portfolioOpenProject(projectId, false);
+          }
+        } else if (hash === '#cdmp' || hash === '#safestay' || hash === '#dharma' || hash === '#forge') {
+          const projectId = hash.substring(1);
+          if (PROJECTS_DATA[projectId]) {
+            window.portfolioOpenProject(projectId, false);
+          }
+        } else {
+          if (projectModalView && projectModalView.classList.contains('active')) {
+            window.portfolioCloseProject(false);
+          }
+        }
+      }
+
+      window.addEventListener('hashchange', handleHashChange);
+      window.addEventListener('popstate', handleHashChange);
+
+      // Check on initial page load
+      setTimeout(() => {
+        handleHashChange();
+      }, 100);
+    });
+  </script>
+</body>
+
+</html>
